@@ -16,6 +16,12 @@ namespace SGHA
 
             var app = builder.Build();
 
+            // Cores Configs
+            app.UseCors(policyBuilder =>
+            {
+                policyBuilder.WithOrigins("http://localhost:4200/").AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod();
+            });
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {

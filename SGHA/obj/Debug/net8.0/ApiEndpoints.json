@@ -16,6 +16,116 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SGHA.Controllers.HouseController",
+    "Method": "ActivateHouse",
+    "RelativePath": "api/House/{houseId}/activate",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.HouseController",
+    "Method": "MarkHouseAsNoActive",
+    "RelativePath": "api/House/{houseId}/inactive",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.HouseController",
+    "Method": "InsertHouse",
+    "RelativePath": "api/House/AddHouse",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseDto",
+        "Type": "SGHA.DTO.AddHouseDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.HouseController",
+    "Method": "GetAllHouses",
+    "RelativePath": "api/House/AllHouse",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SGHA.DTO.ShowHouseDto, SGHA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SGHA.Controllers.HouseController",
+    "Method": "GetUsersByHouseId",
+    "RelativePath": "api/House/ByHouseId/{houseId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SGHA.DTO.UserDataDto, SGHA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SGHA.Controllers.HouseController",
+    "Method": "SetHouseToMaintenance",
+    "RelativePath": "api/House/maintenance",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SGHA.Controllers.UserController",
     "Method": "CreateUser",
     "RelativePath": "api/User/create-user",
@@ -30,5 +140,57 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.UserController",
+    "Method": "SetUserStatusActive",
+    "RelativePath": "api/User/set-status-active/{userID}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.UserController",
+    "Method": "SetUserStatusInactive",
+    "RelativePath": "api/User/set-status-inactive/{userID}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.UserController",
+    "Method": "GetAllUsers",
+    "RelativePath": "api/User/ShowAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SGHA.DTO.UserDataDto, SGHA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

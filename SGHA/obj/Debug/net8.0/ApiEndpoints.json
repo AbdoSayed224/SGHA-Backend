@@ -1,5 +1,42 @@
 [
   {
+    "ContainingType": "SGHA.Controllers.AccountController",
+    "Method": "DeleteAccount",
+    "RelativePath": "api/Account/delete-account/{accountId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.AccountController",
+    "Method": "PatchAccount",
+    "RelativePath": "api/Account/patch-account/{accountId}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "accountDto",
+        "Type": "SGHA.DTO.UpdateAccountDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SGHA.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/Auth/login",
@@ -10,6 +47,22 @@
       {
         "Name": "loginDto",
         "Type": "SGHA.DTO.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.AuthController",
+    "Method": "ResetPassword",
+    "RelativePath": "api/Auth/reset-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SGHA.DTO.ResetPasswordDto",
         "IsRequired": true
       }
     ],
@@ -99,7 +152,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[SGHA.DTO.UserDataDto, SGHA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SGHA.DTO.ShowUserDto, SGHA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -126,6 +179,133 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SGHA.Controllers.HouseController",
+    "Method": "PatchHouse",
+    "RelativePath": "api/House/Update-House/{houseId}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "houseDto",
+        "Type": "SGHA.DTO.UpdateHouseDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.SensorController",
+    "Method": "AddSensor",
+    "RelativePath": "api/Sensor",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sensorDto",
+        "Type": "SGHA.DTO.SensorDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.SensorController",
+    "Method": "GetSensor",
+    "RelativePath": "api/Sensor/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.SensorController",
+    "Method": "UpdateSensor",
+    "RelativePath": "api/Sensor/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "sensorDto",
+        "Type": "SGHA.DTO.SensorDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.SensorController",
+    "Method": "DeleteSensor",
+    "RelativePath": "api/Sensor/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.SensorController",
+    "Method": "UpdateSensorValue",
+    "RelativePath": "api/Sensor/{id}/value",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "sensorValue",
+        "Type": "System.Nullable\u00601[[System.Double, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.SensorController",
+    "Method": "GetSensorsByHouseId",
+    "RelativePath": "api/Sensor/house/{houseId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SGHA.Controllers.UserController",
     "Method": "CreateUser",
     "RelativePath": "api/User/create-user",
@@ -136,6 +316,38 @@
       {
         "Name": "createUserDto",
         "Type": "SGHA.DTO.CreateUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.UserController",
+    "Method": "DeleteUserAndAccountByUserId",
+    "RelativePath": "api/User/delete-user-and-account/{userId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.UserController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/User/delete-user/{userId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -183,7 +395,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[SGHA.DTO.UserDataDto, SGHA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SGHA.DTO.ShowUserDto, SGHA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -192,5 +404,26 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "SGHA.Controllers.UserController",
+    "Method": "PatchUser",
+    "RelativePath": "api/User/Update-User/{userId}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userDto",
+        "Type": "SGHA.DTO.UpdateUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

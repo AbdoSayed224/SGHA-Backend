@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SGHA\\SGHA\\SGHA.csproj": {}
+    "C:\\Users\\farjani\\OneDrive\\Documents\\SGHA-Backend\\SGHA\\SGHA.csproj": {}
   },
   "projects": {
-    "D:\\SGHA\\SGHA\\SGHA.csproj": {
+    "C:\\Users\\farjani\\OneDrive\\Documents\\SGHA-Backend\\SGHA\\SGHA.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SGHA\\SGHA\\SGHA.csproj",
+        "projectUniqueName": "C:\\Users\\farjani\\OneDrive\\Documents\\SGHA-Backend\\SGHA\\SGHA.csproj",
         "projectName": "SGHA",
-        "projectPath": "D:\\SGHA\\SGHA\\SGHA.csproj",
+        "projectPath": "C:\\Users\\farjani\\OneDrive\\Documents\\SGHA-Backend\\SGHA\\SGHA.csproj",
         "packagesPath": "C:\\Users\\farjani\\.nuget\\packages\\",
-        "outputPath": "D:\\SGHA\\SGHA\\obj\\",
+        "outputPath": "C:\\Users\\farjani\\OneDrive\\Documents\\SGHA-Backend\\SGHA\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\farjani\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -40,12 +43,25 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.35, )"
+            },
+            "Fleck": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.9.0, )"
+            },
             "Microsoft.Data.SqlClient": {
               "target": "Package",
               "version": "[5.2.2, )"
@@ -53,6 +69,10 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[4.9.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -78,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

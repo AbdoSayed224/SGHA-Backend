@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "yIvy195FUpAhWPln96P6YQR31oxEmojrHyaDSjRVbO4=",
+  "Hash": "tYGQPYtLe5HbollRR7NSAduiUJpcRdosnP803YDBjvk=",
   "Source": "SGHA",
   "BasePath": "_content/SGHA",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

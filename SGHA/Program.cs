@@ -1,4 +1,6 @@
 
+//using Fleck;
+
 namespace SGHA
 {
     public class Program
@@ -7,6 +9,8 @@ namespace SGHA
         {
             var builder = WebApplication.CreateBuilder(args);
 
+           
+          
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -38,5 +42,11 @@ namespace SGHA
 
             app.Run();
         }
+
+        //private static websocketServer CreateWebSocketServer()
+        //{
+        //    return
+        //                new websocketServer();
+        //}
     }
 }

@@ -73,9 +73,9 @@ namespace SGHA.Controllers
 
         // Users by GreenHouse ID
         [HttpGet("ByHouseId/{houseId}")]
-        public async Task<ActionResult<IEnumerable<UserDataDto>>> GetUsersByHouseId(int houseId)
+        public async Task<ActionResult<IEnumerable<ShowUserDto>>> GetUsersByHouseId(int houseId)
         {
-            var users = new List<UserDataDto>();
+            var users = new List<ShowUserDto>();
 
             string query = @"
         SELECT u.UserID, u.UserName, u.PhoneNumber, a.EmailAddress AS AccountEmail, r.RoleName, 
@@ -100,7 +100,7 @@ namespace SGHA.Controllers
                         {
                             while (await reader.ReadAsync())
                             {
-                                var user = new UserDataDto
+                                var user = new ShowUserDto
                                 {
                                     UserID = reader.GetInt32(reader.GetOrdinal("UserID")),
                                     UserName = reader.GetString(reader.GetOrdinal("UserName")),
@@ -108,7 +108,7 @@ namespace SGHA.Controllers
                                     AccountEmail = reader.GetString(reader.GetOrdinal("AccountEmail")),
                                     RoleName = reader.GetString(reader.GetOrdinal("RoleName")),
                                     IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive")),
-                                    HouseName = reader.IsDBNull(reader.GetOrdinal("HouseName")) ? null : reader.GetString(reader.GetOrdinal("HouseName"))
+                                    HouseID = reader.IsDBNull(reader.GetOrdinal("HouseID")) ? null : reader.GetString(reader.GetOrdinal("HouseID"))
                                 };
 
                                 users.Add(user);
@@ -134,6 +134,49 @@ namespace SGHA.Controllers
             }
         }
 
+        // Patch Sys_House
+        [HttpPatch("Update-House/{houseId}")]
+        public async Task<IActionResult> PatchHouse(int houseId, [FromBody] UpdateHouseDto houseDto)
+        {
+            if (houseDto == null) return BadRequest("Invalid data.");
+
+            var query = @"
+                UPDATE Sys_House
+                SET 
+                    HouseName = CASE WHEN @HouseName IS NOT NULL THEN @HouseName ELSE HouseName END,
+                    Location = CASE WHEN @Location IS NOT NULL THEN @Location ELSE Location END,
+                    SizeSquareMeters = CASE WHEN @SizeSquareMeters IS NOT NULL THEN @SizeSquareMeters ELSE SizeSquareMeters END,
+                    Status = CASE WHEN @Status IS NOT NULL THEN @Status ELSE Status END,
+                    OwnerID = CASE WHEN @OwnerID IS NOT NULL THEN @OwnerID ELSE OwnerID END,
+                    LastMaintenance = CASE WHEN @LastMaintenance IS NOT NULL THEN @LastMaintenance ELSE LastMaintenance END,
+                    UpdatedAt = @UpdatedAt
+                WHERE HouseID = @HouseID";
+
+            try
+            {
+                using (var connection = new SqlConnection(_connectionString))
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@HouseID", houseId);
+                    command.Parameters.AddWithValue("@HouseName", (object?)houseDto.HouseName ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@Location", (object?)houseDto.Location ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@SizeSquareMeters", (object?)houseDto.SizeSquareMeters ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@Status", (object?)houseDto.Status ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@OwnerID", (object?)houseDto.OwnerID ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@LastMaintenance", (object?)houseDto.LastMaintenance ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@UpdatedAt", DateTime.UtcNow);
+
+                    await connection.OpenAsync();
+                    var rowsAffected = await command.ExecuteNonQueryAsync();
+
+                    return rowsAffected > 0 ? Ok("House updated successfully.") : NotFound("House not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
 
 
         // Make a House Maintenance

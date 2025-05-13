@@ -123,8 +123,13 @@ namespace SGHA.Controllers
             }
         }
 
-        [HttpPatch("{id}/value")]
-        public async Task<IActionResult> UpdateSensorValue(int id, [FromBody] double? sensorValue)
+        private class patchSensorValue
+        {
+            public double? SensorValue { get; set; }
+        }
+
+        [HttpPatch("{id}/value/{sensorValue}")]
+        public async Task<IActionResult> UpdateSensorValue(int id, double sensorValue)
         {
             if (sensorValue == null) return BadRequest();
 

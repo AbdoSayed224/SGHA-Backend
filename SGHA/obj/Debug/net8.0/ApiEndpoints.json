@@ -271,7 +271,7 @@
   {
     "ContainingType": "SGHA.Controllers.SensorController",
     "Method": "UpdateSensorValue",
-    "RelativePath": "api/Sensor/{id}/value",
+    "RelativePath": "api/Sensor/{id}/value/{sensorValue}",
     "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
@@ -283,8 +283,8 @@
       },
       {
         "Name": "sensorValue",
-        "Type": "System.Nullable\u00601[[System.Double, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
+        "Type": "System.Double",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

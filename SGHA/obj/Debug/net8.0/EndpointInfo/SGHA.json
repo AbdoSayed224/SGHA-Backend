@@ -467,7 +467,7 @@
         }
       }
     },
-    "/api/Sensor/{id}/value": {
+    "/api/Sensor/{id}/value/{sensorValue}": {
       "patch": {
         "tags": [
           "Sensor"
@@ -481,30 +481,17 @@
               "type": "integer",
               "format": "int32"
             }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "number",
-                "format": "double"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "number",
-                "format": "double"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "number",
-                "format": "double"
-              }
+          },
+          {
+            "name": "sensorValue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "double"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "Success"

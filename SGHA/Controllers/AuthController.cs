@@ -2,12 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using MimeKit;
-using Org.BouncyCastle.Crypto.Generators;
 using SGHA.DTO;
-using System.Drawing;
-using System.Net;
-using System.Net.Mail;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace SGHA.Controllers
 {

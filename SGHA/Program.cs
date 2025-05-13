@@ -20,10 +20,13 @@ namespace SGHA
 
             var app = builder.Build();
 
-            // Cores Configs
+            // Update the CORS configuration to ensure proper handling of preflight requests and allow specific origins.  
             app.UseCors(policyBuilder =>
             {
-                policyBuilder.WithOrigins("http://localhost:4200/").AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod();
+                policyBuilder.WithOrigins("http://localhost:4200", "https://greensync-sigma.vercel.app") // Allow the Angular app's origin.  
+                             .AllowAnyHeader()
+                             .AllowAnyMethod()
+                             .AllowCredentials(); // Ensure credentials are allowed if needed.  
             });
 
             // Configure the HTTP request pipeline.

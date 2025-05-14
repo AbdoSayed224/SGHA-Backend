@@ -72,19 +72,15 @@ namespace SGHA.Controllers
         }
 
         // Users by GreenHouse ID
-        [HttpGet("ByHouseId/{houseId}")]
-        public async Task<ActionResult<IEnumerable<ShowUserDto>>> GetUsersByHouseId(int houseId)
+        // GET: api/House/by-id/{houseId}
+        [HttpGet("by-id/{houseId}")]
+        public async Task<ActionResult<HouseDto>> GetGreenhouseById(int houseId)
         {
-            var users = new List<ShowUserDto>();
-
-            string query = @"
-        SELECT u.UserID, u.UserName, u.PhoneNumber, a.EmailAddress AS AccountEmail, r.RoleName, 
-               u.CreatedAt, u.UpdatedAt, u.IsActive, h.HouseName
-        FROM Sys_User u
-        INNER JOIN Sys_Account a ON u.AccountID = a.AccountID
-        INNER JOIN Sys_Role r ON u.RoleID = r.RoleID
-        LEFT JOIN Sys_House h ON u.UserID = h.OwnerID
-        WHERE h.HouseID = @HouseID";
+            var query = @"
+        SELECT HouseID, HouseName, Location, SizeSquareMeters, Status, OwnerID, 
+               LastMaintenance, CreatedAt, UpdatedAt
+        FROM Sys_House
+        WHERE HouseID = @HouseID";
 
             try
             {
@@ -98,31 +94,28 @@ namespace SGHA.Controllers
 
                         using (var reader = await command.ExecuteReaderAsync())
                         {
-                            while (await reader.ReadAsync())
+                            if (await reader.ReadAsync())
                             {
-                                var user = new ShowUserDto
+                                var house = new HouseDto
                                 {
-                                    UserID = reader.GetInt32(reader.GetOrdinal("UserID")),
-                                    UserName = reader.GetString(reader.GetOrdinal("UserName")),
-                                    PhoneNumber = reader.IsDBNull(reader.GetOrdinal("PhoneNumber")) ? null : reader.GetString(reader.GetOrdinal("PhoneNumber")),
-                                    AccountEmail = reader.GetString(reader.GetOrdinal("AccountEmail")),
-                                    RoleName = reader.GetString(reader.GetOrdinal("RoleName")),
-                                    IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive")),
-                                    HouseID = reader.IsDBNull(reader.GetOrdinal("HouseID")) ? null : reader.GetString(reader.GetOrdinal("HouseID"))
+                                    HouseID = reader.GetInt32(reader.GetOrdinal("HouseID")),
+                                    HouseName = reader.GetString(reader.GetOrdinal("HouseName")),
+                                    Location = reader.GetString(reader.GetOrdinal("Location")),
+                                    SizeSquareMeters = (float)reader.GetDouble(reader.GetOrdinal("SizeSquareMeters")),
+                                    Status = reader.GetString(reader.GetOrdinal("Status")),
+                                    OwnerID = reader.GetInt32(reader.GetOrdinal("OwnerID")),
+                                    LastMaintenance = reader.GetDateTime(reader.GetOrdinal("LastMaintenance")),
+                                    CreatedAt = reader.GetDateTime(reader.GetOrdinal("CreatedAt")),
+                                    UpdatedAt = reader.GetDateTime(reader.GetOrdinal("UpdatedAt"))
                                 };
 
-                                users.Add(user);
+                                return Ok(house);
                             }
                         }
                     }
                 }
 
-                if (users.Count == 0)
-                {
-                    return NotFound("No users found for the provided HouseID.");
-                }
-
-                return Ok(users);
+                return NotFound("Greenhouse not found.");
             }
             catch (SqlException ex)
             {
@@ -133,6 +126,7 @@ namespace SGHA.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
 
         // Patch Sys_House
         [HttpPatch("Update-House/{houseId}")]

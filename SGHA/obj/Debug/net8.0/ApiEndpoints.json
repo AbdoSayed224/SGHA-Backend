@@ -1,6 +1,16 @@
 [
   {
     "ContainingType": "SGHA.Controllers.AccountController",
+    "Method": "GetAllAccounts",
+    "RelativePath": "api/Account/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.AccountController",
     "Method": "DeleteAccount",
     "RelativePath": "api/Account/delete-account/{accountId}",
     "HttpMethod": "DELETE",
@@ -37,6 +47,43 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SGHA.Controllers.AI_IssuesController",
+    "Method": "GetIssuesByHouseId",
+    "RelativePath": "api/AI_Issues/{houseId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.AI_IssuesController",
+    "Method": "PostIssue",
+    "RelativePath": "api/AI_Issues/{houseId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "SGHA.DTO.AIIssueDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SGHA.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/Auth/login",
@@ -63,6 +110,160 @@
       {
         "Name": "request",
         "Type": "SGHA.DTO.ResetPasswordDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.ControlOptionController",
+    "Method": "PatchIsAutomatedOff",
+    "RelativePath": "api/ControlOption/automated/off/{houseId}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.ControlOptionController",
+    "Method": "PatchIsAutomatedOn",
+    "RelativePath": "api/ControlOption/automated/on/{houseId}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.ControlOptionController",
+    "Method": "GetControlOptionsByHouseId",
+    "RelativePath": "api/ControlOption/by-house/{houseId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SGHA.DTO.ControlOptionDto, SGHA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SGHA.Controllers.ControlOptionController",
+    "Method": "PatchFanOff",
+    "RelativePath": "api/ControlOption/fan/off/{houseId}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.ControlOptionController",
+    "Method": "PatchFanOn",
+    "RelativePath": "api/ControlOption/fan/on/{houseId}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.ControlOptionController",
+    "Method": "PatchLightOff",
+    "RelativePath": "api/ControlOption/light/off/{houseId}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.ControlOptionController",
+    "Method": "PatchLightOn",
+    "RelativePath": "api/ControlOption/light/on/{houseId}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.ControlOptionController",
+    "Method": "PatchWaterOff",
+    "RelativePath": "api/ControlOption/water/off/{houseId}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.ControlOptionController",
+    "Method": "PatchWaterOn",
+    "RelativePath": "api/ControlOption/water/on/{houseId}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -138,8 +339,8 @@
   },
   {
     "ContainingType": "SGHA.Controllers.HouseController",
-    "Method": "GetUsersByHouseId",
-    "RelativePath": "api/House/ByHouseId/{houseId}",
+    "Method": "GetGreenhouseById",
+    "RelativePath": "api/House/by-id/{houseId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -152,7 +353,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[SGHA.DTO.ShowUserDto, SGHA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "SGHA.DTO.HouseDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -293,6 +494,22 @@
     "ContainingType": "SGHA.Controllers.SensorController",
     "Method": "GetSensorsByHouseId",
     "RelativePath": "api/Sensor/house/{houseId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.SensorController",
+    "Method": "GetKeySensorsByHouseAsObject",
+    "RelativePath": "api/Sensor/key-sensors/by-house-object/{houseId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

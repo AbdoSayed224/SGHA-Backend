@@ -14,6 +14,44 @@ namespace SGHA.Controllers
         {
             _connectionString = configuration.GetConnectionString("Default");
         }
+        // GET: api/Account/all
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllAccounts()
+        {
+            var query = "SELECT AccountID, EmailAddress, AccountPassword, CreatedAt, UpdatedAt FROM Sys_Account";
+
+            try
+            {
+                var accounts = new List<object>();
+
+                using (var connection = new SqlConnection(_connectionString))
+                using (var command = new SqlCommand(query, connection))
+                {
+                    await connection.OpenAsync();
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            accounts.Add(new
+                            {
+                                AccountID = reader["AccountID"],
+                                EmailAddress = reader["EmailAddress"],
+                                AccountPassword = reader["AccountPassword"],
+                                CreatedAt = reader["CreatedAt"],
+                                UpdatedAt = reader["UpdatedAt"]
+                            });
+                        }
+                    }
+                }
+
+                return Ok(accounts);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
         // Patch Sys_Account
         [HttpPatch("patch-account/{accountId}")]
         public async Task<IActionResult> PatchAccount(int accountId, [FromBody] UpdateAccountDto accountDto)

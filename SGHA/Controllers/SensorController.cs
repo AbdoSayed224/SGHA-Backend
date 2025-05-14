@@ -94,6 +94,72 @@ namespace SGHA.Controllers
 
             return Ok(sensors);
         }
+
+
+        [HttpGet("key-sensors/by-house-object/{houseId}")]
+        public async Task<IActionResult> GetKeySensorsByHouseAsObject(int houseId)
+        {
+            double? temperature = null;
+            double? humidity = null;
+            double? moisture = null;
+
+            string query = @"
+        SELECT SensorType, SensorValue
+        FROM Sys_Sensor
+        WHERE HouseID = @HouseID
+          AND SensorType IN ('Temperature', 'Humidity', 'Soil Moisture')";
+
+            try
+            {
+                using (var connection = new SqlConnection(_connectionString))
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@HouseID", houseId);
+                    await connection.OpenAsync();
+
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            string sensorType = reader.GetString(reader.GetOrdinal("SensorType"));
+                            double value = reader.GetDouble(reader.GetOrdinal("SensorValue"));
+
+                            switch (sensorType)
+                            {
+                                case "Temperature":
+                                    temperature = value;
+                                    break;
+                                case "Humidity":
+                                    humidity = value;
+                                    break;
+                                case "Soil Moisture":
+                                    moisture = value;
+                                    break;
+                            }
+                        }
+                    }
+                }
+
+                var result = new
+                {
+                    temperature,
+                    humidity,
+                    moisture
+                };
+
+                return Ok(result);
+            }
+            catch (SqlException ex)
+            {
+                return StatusCode(500, $"Database error: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+
         [HttpPatch("{id}")]
         public async Task<IActionResult> UpdateSensor(int id, [FromBody] SensorDto sensorDto)
         {
@@ -193,5 +259,7 @@ namespace SGHA.Controllers
                 return NoContent();
             }
         }
+
+     
     }
-}
+} 

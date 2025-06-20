@@ -19,7 +19,7 @@ namespace SGHA
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            //added for SignalR
             builder.Services.AddSignalR();
 
             var app = builder.Build();
@@ -42,6 +42,8 @@ namespace SGHA
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+
 
             app.UseHttpsRedirection();
 

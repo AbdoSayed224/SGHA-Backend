@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Data.SqlClient;
 using SGHA.DTO;
+using SGHA.Hubs;
 using System.Data;
 using System.Threading.Tasks;
 namespace SGHA.Controllers
@@ -10,10 +12,13 @@ namespace SGHA.Controllers
     public class AI_IssuesController : ControllerBase
     {
         private readonly string _connectionString;
+        private readonly IHubContext<ControlStatusHub> _hubContext;
+        private readonly IHubContext<ControlStatusHub> hubContext;
 
-        public AI_IssuesController(IConfiguration configuration)
+        public AI_IssuesController(IConfiguration configuration,IHubContext<ControlStatusHub>hubContext)
         {
             _connectionString = configuration.GetConnectionString("Default");
+            _hubContext = hubContext;
         }
 
         private SqlConnection GetConnection()
@@ -56,13 +61,13 @@ namespace SGHA.Controllers
                 return StatusCode(500, $"Error: {ex.Message}");
             }
         }
-        // POST: api/AI_Issues/{houseId}
+
         [HttpPost("{houseId}")]
         public async Task<IActionResult> PostIssue(int houseId, [FromBody] AIIssueDto dto)
         {
             string query = @"
-                INSERT INTO Sys_AI_Issues (HouseID, IsAnomaly, Action, Parameter, Range, Value, Message, CreatedAt)
-                VALUES (@HouseID, @IsAnomaly, @Action, @Parameter, @Range, @Value, @Message, @CreatedAt)";
+            INSERT INTO Sys_AI_Issues (HouseID, IsAnomaly, Action, Parameter, Range, Value, Message, CreatedAt)
+            VALUES (@HouseID, @IsAnomaly, @Action, @Parameter, @Range, @Value, @Message, @CreatedAt)";
 
             try
             {
@@ -81,14 +86,68 @@ namespace SGHA.Controllers
                 await connection.OpenAsync();
                 int rows = await command.ExecuteNonQueryAsync();
 
-                return rows > 0 ? Ok("Issue recorded.") : BadRequest("Failed to insert.");
+                if (rows > 0)
+                {
+                    // إرسال إشعار SignalR بعد إضافة البيانات
+                    await _hubContext.Clients.All.SendAsync("ReceiveNotification", new
+                    {
+                        houseId = houseId,
+                        isAnomaly = dto.IsAnomaly,
+                        action = dto.Action,
+                        parameter = dto.Parameter,
+                        range = dto.Range,
+                        value = dto.Value,
+                        message = dto.Message,
+                        createdAt = DateTime.UtcNow
+                    });
+
+                    return Ok("Issue recorded and notification sent.");
+                }
+                else
+                {
+                    return BadRequest("Failed to insert.");
+                }
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Error: {ex.Message}");
             }
         }
+        #region post without SignalR
+        // POST: api/AI_Issues/{houseId}
+        /*     [HttpPost("{houseId}")]
+             public async Task<IActionResult> PostIssue(int houseId, [FromBody] AIIssueDto dto)
+             {
+                 string query = @"
+                     INSERT INTO Sys_AI_Issues (HouseID, IsAnomaly, Action, Parameter, Range, Value, Message, CreatedAt)
+                     VALUES (@HouseID, @IsAnomaly, @Action, @Parameter, @Range, @Value, @Message, @CreatedAt)";
 
+                 try
+                 {
+                     using var connection = new SqlConnection(_connectionString);
+                     using var command = new SqlCommand(query, connection);
+
+                     command.Parameters.AddWithValue("@HouseID", houseId);
+                     command.Parameters.AddWithValue("@IsAnomaly", dto.IsAnomaly);
+                     command.Parameters.AddWithValue("@Action", dto.Action ?? (object)DBNull.Value);
+                     command.Parameters.AddWithValue("@Parameter", dto.Parameter ?? (object)DBNull.Value);
+                     command.Parameters.AddWithValue("@Range", dto.Range ?? (object)DBNull.Value);
+                     command.Parameters.AddWithValue("@Value", dto.Value);
+                     command.Parameters.AddWithValue("@Message", dto.Message ?? (object)DBNull.Value);
+                     command.Parameters.AddWithValue("@CreatedAt", DateTime.UtcNow);
+
+                     await connection.OpenAsync();
+                     int rows = await command.ExecuteNonQueryAsync();
+
+                     return rows > 0 ? Ok("Issue recorded.") : BadRequest("Failed to insert.");
+                 }
+                 catch (Exception ex)
+                 {
+                     return StatusCode(500, $"Error: {ex.Message}");
+                 }
+             }*/
+
+        #endregion
 
     }
 }

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\SGHA.csproj": {}
+    "E:\\SGHA-backend\\SGHA-Backend\\SGHA\\SGHA.csproj": {}
   },
   "projects": {
-    "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\SGHA.csproj": {
+    "E:\\SGHA-backend\\SGHA-Backend\\SGHA\\SGHA.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\SGHA.csproj",
+        "projectUniqueName": "E:\\SGHA-backend\\SGHA-Backend\\SGHA\\SGHA.csproj",
         "projectName": "SGHA",
-        "projectPath": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\SGHA.csproj",
-        "packagesPath": "C:\\Users\\djmrj\\.nuget\\packages\\",
-        "outputPath": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\obj\\",
+        "projectPath": "E:\\SGHA-backend\\SGHA-Backend\\SGHA\\SGHA.csproj",
+        "packagesPath": "C:\\Users\\farjani\\.nuget\\packages\\",
+        "outputPath": "E:\\SGHA-backend\\SGHA-Backend\\SGHA\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\djmrj\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\farjani\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

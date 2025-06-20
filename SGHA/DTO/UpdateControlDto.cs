@@ -6,7 +6,7 @@ namespace SGHA.DTO
     {
         
         
-            public int Value { get; set; }  // Should be 0 or 1
+            public int Value { get; set; } 
         
     }
 }

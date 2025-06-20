@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Data.SqlClient;
 using SGHA.DTO;
-using System.Data;
-using System.Threading.Tasks;
+using SGHA.Hubs;
 
 namespace SGHA.Controllers
 {
@@ -10,16 +10,75 @@ namespace SGHA.Controllers
     [ApiController]
     public class SensorController : ControllerBase
     {
+        private readonly IHubContext<ControlStatusHub> _hubContext;
         private readonly string _connectionString;
 
-        public SensorController(IConfiguration configuration)
+        public SensorController(IConfiguration configuration, IHubContext<ControlStatusHub> hubContext)
         {
+            _hubContext = hubContext;
             _connectionString = configuration.GetConnectionString("Default");
         }
 
         private SqlConnection GetConnection()
         {
             return new SqlConnection(_connectionString);
+        }
+        private async Task NotifyClients(KeySensorReadingsDto updatedControl)
+        {
+            await _hubContext.Clients.All.SendAsync("ReceiveSensorsUpdate", updatedControl);
+        }
+
+        private async Task<KeySensorReadingsDto> GetKeySensorReadingsByHouseId(int houseId)
+        {
+            double? temperature = null;
+            double? humidity = null;
+            double? moisture = null;
+
+            string query = @"
+                SELECT SensorType, SensorValue
+                FROM Sys_Sensor
+                WHERE HouseID = @HouseID
+                  AND SensorType IN ('Temperature', 'Humidity', 'Soil Moisture')";
+
+            using (var connection = GetConnection())
+            using (var command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@HouseID", houseId);
+                await connection.OpenAsync();
+
+                using (var reader = await command.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        string sensorType = reader.GetString(reader.GetOrdinal("SensorType"));
+                        object valueObj = reader["SensorValue"];
+                        double? value = valueObj == DBNull.Value ? null : Convert.ToDouble(valueObj);
+
+                        switch (sensorType.Trim().ToLower())
+                        {
+                            case "temperature":
+                                temperature = value;
+                                break;
+                            case "humidity":
+                                humidity = value;
+                                break;
+                            case "soil moisture":
+                                moisture = value;
+                                break;
+                        }
+
+                    }
+                }
+            }
+
+            var result = new KeySensorReadingsDto
+            {
+                Temperature = temperature,
+                Humidity = humidity,
+                Moisture = moisture
+            };
+
+            return result;
         }
 
         [HttpGet("{id}")]
@@ -57,6 +116,7 @@ namespace SGHA.Controllers
 
             return Ok(sensor);
         }
+
         [HttpGet("house/{houseId}")]
 
         public async Task<IActionResult> GetSensorsByHouseId(int houseId)
@@ -140,11 +200,11 @@ namespace SGHA.Controllers
                     }
                 }
 
-                var result = new
+                var result = new KeySensorReadingsDto
                 {
-                    temperature,
-                    humidity,
-                    moisture
+                    Temperature = temperature,
+                    Humidity = humidity,
+                    Moisture = moisture
                 };
 
                 return Ok(result);
@@ -210,12 +270,22 @@ namespace SGHA.Controllers
                 cmd.Parameters.AddWithValue("@UpdatedAt", DateTime.UtcNow);
 
                 var rowsAffected = await cmd.ExecuteNonQueryAsync();
-                if (rowsAffected == 0) return NotFound();
+                if (rowsAffected == 0)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    var updatedReadings = await GetKeySensorReadingsByHouseId(1);
+                    if (updatedReadings != null)
+                    {
+                        await NotifyClients(updatedReadings); // ✨ إشعار SignalR هنا ✨
+                    }
 
-                return NoContent();
+                    return Ok(new { FanStatus = 1 });
+                }
             }
         }
-
 
         [HttpPost]
         public async Task<IActionResult> AddSensor([FromBody] SensorDto sensorDto)
@@ -258,8 +328,6 @@ namespace SGHA.Controllers
 
                 return NoContent();
             }
-        }
-
-     
+        }     
     }
 } 

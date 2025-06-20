@@ -524,6 +524,32 @@
   },
   {
     "ContainingType": "SGHA.Controllers.UserController",
+    "Method": "GetUsersByHouseId",
+    "RelativePath": "api/User/by-house/{houseId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SGHA.DTO.ShowUserDto, SGHA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SGHA.Controllers.UserController",
     "Method": "CreateUser",
     "RelativePath": "api/User/create-user",
     "HttpMethod": "POST",

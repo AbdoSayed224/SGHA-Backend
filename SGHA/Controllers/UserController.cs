@@ -27,8 +27,8 @@ namespace SGHA.Controllers
         SELECT u.UserID, u.UserName, u.PhoneNumber, a.EmailAddress AS AccountEmail, r.RoleName, 
                u.CreatedAt, u.UpdatedAt, u.IsActive, h.HouseName
         FROM Sys_User u
-        INNER JOIN Sys_Account a ON u.AccountID = a.AccountID
-        INNER JOIN Sys_Role r ON u.RoleID = r.RoleID
+        LEFT JOIN Sys_Account a ON u.AccountID = a.AccountID
+        LEFT JOIN Sys_Role r ON u.RoleID = r.RoleID
         LEFT JOIN Sys_House h ON u.HouseID = h.HouseID"; // Assuming UserID is linked to OwnerID in Sys_House
 
             try
@@ -52,6 +52,63 @@ namespace SGHA.Controllers
                                     RoleName = reader.GetString(reader.GetOrdinal("RoleName")),
                                     IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive")),
                                     HouseID = reader.IsDBNull(reader.GetOrdinal("HouseName")) ? null : reader.GetString(reader.GetOrdinal("HouseName")) // Getting HouseName
+                                };
+
+                                users.Add(user);
+                            }
+                        }
+                    }
+                }
+
+                return Ok(users);
+            }
+            catch (SqlException ex)
+            {
+                return StatusCode(500, $"Database error: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpGet("by-house/{houseId}")]
+        public async Task<ActionResult<IEnumerable<ShowUserDto>>> GetUsersByHouseId(string houseId)
+        {
+            var users = new List<ShowUserDto>();
+
+            string query = @"
+                SELECT u.UserID, u.UserName, u.PhoneNumber, a.EmailAddress AS AccountEmail, r.RoleName, 
+                       u.CreatedAt, u.UpdatedAt, u.IsActive, h.HouseName
+                FROM Sys_User u
+                INNER JOIN Sys_Account a ON u.AccountID = a.AccountID
+                INNER JOIN Sys_Role r ON u.RoleID = r.RoleID
+                LEFT JOIN Sys_House h ON u.HouseID = h.HouseID
+                WHERE u.HouseID = @HouseID";
+
+            try
+            {
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    await connection.OpenAsync();
+
+                    using (var command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@HouseID", houseId);
+
+                        using (var reader = await command.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                var user = new ShowUserDto
+                                {
+                                    UserID = reader.GetInt32(reader.GetOrdinal("UserID")),
+                                    UserName = reader.GetString(reader.GetOrdinal("UserName")),
+                                    PhoneNumber = reader.IsDBNull(reader.GetOrdinal("PhoneNumber")) ? null : reader.GetString(reader.GetOrdinal("PhoneNumber")),
+                                    AccountEmail = reader.GetString(reader.GetOrdinal("AccountEmail")),
+                                    RoleName = reader.GetString(reader.GetOrdinal("RoleName")),
+                                    IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive")),
+                                    HouseID = reader.IsDBNull(reader.GetOrdinal("HouseName")) ? null : reader.GetString(reader.GetOrdinal("HouseName"))
                                 };
 
                                 users.Add(user);
@@ -393,5 +450,6 @@ namespace SGHA.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+       
     }
 }

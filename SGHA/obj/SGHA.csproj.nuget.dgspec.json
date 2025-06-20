@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\SGHA-backend\\SGHA-Backend\\SGHA\\SGHA.csproj": {}
+    "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\SGHA.csproj": {}
   },
   "projects": {
-    "E:\\SGHA-backend\\SGHA-Backend\\SGHA\\SGHA.csproj": {
+    "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\SGHA.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\SGHA-backend\\SGHA-Backend\\SGHA\\SGHA.csproj",
+        "projectUniqueName": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\SGHA.csproj",
         "projectName": "SGHA",
-        "projectPath": "E:\\SGHA-backend\\SGHA-Backend\\SGHA\\SGHA.csproj",
-        "packagesPath": "C:\\Users\\farjani\\.nuget\\packages\\",
-        "outputPath": "E:\\SGHA-backend\\SGHA-Backend\\SGHA\\obj\\",
+        "projectPath": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\SGHA.csproj",
+        "packagesPath": "C:\\Users\\djmrj\\.nuget\\packages\\",
+        "outputPath": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\farjani\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\djmrj\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -57,6 +57,10 @@
             "MailKit": {
               "target": "Package",
               "version": "[4.9.0, )"
+            },
+            "Microsoft.AspNetCore.SignalR": {
+              "target": "Package",
+              "version": "[1.2.0, )"
             },
             "Microsoft.Data.SqlClient": {
               "target": "Package",
@@ -94,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

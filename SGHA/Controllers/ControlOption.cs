@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Data.SqlClient;
 using SGHA.DTO;
+using SGHA.Hubs;
 using System.Data;
 using System.Threading.Tasks;
 namespace SGHA.Controllers
@@ -10,23 +12,55 @@ namespace SGHA.Controllers
     public class ControlOptionController : ControllerBase
     {
         private readonly string _connectionString;
+        private readonly IHubContext<ControlStatusHub> _hubContext;
 
-        public ControlOptionController(IConfiguration configuration)
+        public ControlOptionController(IConfiguration configuration, IHubContext<ControlStatusHub> hubContext)
         {
             _connectionString = configuration.GetConnectionString("Default");
+            _hubContext = hubContext;
         }
 
-        private SqlConnection GetConnection()
+        private async Task NotifyClients(ControlOptionDto updatedControl)
         {
-            return new SqlConnection(_connectionString);
+            await _hubContext.Clients.All.SendAsync("ReceiveControlUpdate", updatedControl);
         }
 
+        private async Task<ControlOptionDto?> GetControlFromDb(int houseId)
+        {
+            ControlOptionDto? control = null;
+            string query = "SELECT * FROM Sys_SensorControl WHERE HouseID = @HouseID AND ControlID = 3";
+
+            using var connection = new SqlConnection(_connectionString);
+            using var command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@HouseID", houseId);
+
+            await connection.OpenAsync();
+            using var reader = await command.ExecuteReaderAsync();
+
+            if (await reader.ReadAsync())
+            {
+                control = new ControlOptionDto
+                {
+                    ControlID = reader.GetInt32(reader.GetOrdinal("ControlID")),
+                    HouseID = reader.GetInt32(reader.GetOrdinal("HouseID")),
+                    FanStatus = reader.GetInt32(reader.GetOrdinal("FanStatus")),
+                    LightStatus = reader.GetInt32(reader.GetOrdinal("LightStatus")),
+                    WaterStatus = reader.GetInt32(reader.GetOrdinal("WaterStatus")),
+                    Note = reader.IsDBNull(reader.GetOrdinal("Note")) ? null : reader.GetString(reader.GetOrdinal("Note")),
+                    IsAutomated = reader.GetInt32(reader.GetOrdinal("IsAutomated")),
+                    CreatedAt = reader.GetDateTime(reader.GetOrdinal("CreatedAt")),
+                    UpdatedAt = reader.GetDateTime(reader.GetOrdinal("UpdatedAt"))
+                };
+            }
+
+            return control;
+        }
 
         [HttpGet("by-house/{houseId}")]
         public async Task<ActionResult<IEnumerable<ControlOptionDto>>> GetControlOptionsByHouseId(int houseId)
         {
             var results = new List<ControlOptionDto>();
-            string query = "SELECT * FROM Sys_SensorControl WHERE HouseID = @HouseID";
+            string query = "SELECT * FROM Sys_SensorControl WHERE HouseID = @HouseID and controlId = 3";
 
             try
             {
@@ -60,6 +94,7 @@ namespace SGHA.Controllers
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
         }
+
         [HttpPatch("water/on/{houseId}")]
         public async Task<IActionResult> PatchWaterOn(int houseId)
         {
@@ -80,13 +115,27 @@ namespace SGHA.Controllers
                 await connection.OpenAsync();
                 int result = await command.ExecuteNonQueryAsync();
 
-                return result > 0 ? Ok(new { WaterStatus = 1 }) : NotFound();
+                if (result > 0)
+                {
+                    var updatedControl = await GetControlFromDb(houseId);
+                    if (updatedControl != null)
+                    {
+                        await NotifyClients(updatedControl); // ✨ إشعار SignalR هنا ✨
+                    }
+
+                    return Ok(new { WaterStatus = 1 });
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Error: {ex.Message}");
             }
         }
+
         [HttpPatch("water/off/{houseId}")]
         public async Task<IActionResult> PatchWaterOff(int houseId)
         {
@@ -107,13 +156,27 @@ namespace SGHA.Controllers
                 await connection.OpenAsync();
                 int result = await command.ExecuteNonQueryAsync();
 
-                return result > 0 ? Ok(new { WaterStatus = 0 }) : NotFound();
+                if (result > 0)
+                {
+                    var updatedControl = await GetControlFromDb(houseId);
+                    if (updatedControl != null)
+                    {
+                        await NotifyClients(updatedControl); // ✨ إشعار SignalR هنا ✨
+                    }
+
+                    return Ok(new { WaterStatus = 1 });
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Error: {ex.Message}");
             }
         }
+
         [HttpPatch("light/on/{houseId}")]
         public async Task<IActionResult> PatchLightOn(int houseId)
         {
@@ -134,13 +197,27 @@ namespace SGHA.Controllers
                 await connection.OpenAsync();
                 int result = await command.ExecuteNonQueryAsync();
 
-                return result > 0 ? Ok(new { LightStatus = 1 }) : NotFound();
+                if (result > 0)
+                {
+                    var updatedControl = await GetControlFromDb(houseId);
+                    if (updatedControl != null)
+                    {
+                        await NotifyClients(updatedControl); // ✨ إشعار SignalR هنا ✨
+                    }
+
+                    return Ok(new { LightStatus = 1 });
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Error: {ex.Message}");
             }
         }
+
         [HttpPatch("light/off/{houseId}")]
         public async Task<IActionResult> PatchLightOff(int houseId)
         {
@@ -161,13 +238,27 @@ namespace SGHA.Controllers
                 await connection.OpenAsync();
                 int result = await command.ExecuteNonQueryAsync();
 
-                return result > 0 ? Ok(new { LightStatus = 0 }) : NotFound();
+                if (result > 0)
+                {
+                    var updatedControl = await GetControlFromDb(houseId);
+                    if (updatedControl != null)
+                    {
+                        await NotifyClients(updatedControl); // ✨ إشعار SignalR هنا ✨
+                    }
+
+                    return Ok(new { LightStatus = 1 });
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Error: {ex.Message}");
             }
         }
+
         [HttpPatch("fan/on/{houseId}")]
         public async Task<IActionResult> PatchFanOn(int houseId)
         {
@@ -187,8 +278,20 @@ namespace SGHA.Controllers
 
                 await connection.OpenAsync();
                 int result = await command.ExecuteNonQueryAsync();
+                if (result > 0)
+                {
+                    var updatedControl = await GetControlFromDb(houseId);
+                    if (updatedControl != null)
+                    {
+                        await NotifyClients(updatedControl); // ✨ إشعار SignalR هنا ✨
+                    }
 
-                return result > 0 ? Ok(new { FanStatus = 1 }) : NotFound();
+                    return Ok(new { FanStatus = 1 });
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
             catch (Exception ex)
             {
@@ -215,14 +318,27 @@ namespace SGHA.Controllers
 
                 await connection.OpenAsync();
                 int result = await command.ExecuteNonQueryAsync();
+                if (result > 0)
+                {
+                    var updatedControl = await GetControlFromDb(houseId);
+                    if (updatedControl != null)
+                    {
+                        await NotifyClients(updatedControl); // ✨ إشعار SignalR هنا ✨
+                    }
 
-                return result > 0 ? Ok(new { FanStatus = 0 }) : NotFound();
+                    return Ok(new { FanStatus = 1 });
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Error: {ex.Message}");
             }
         }
+
         [HttpPatch("automated/on/{houseId}")]
         public async Task<IActionResult> PatchIsAutomatedOn(int houseId)
         {
@@ -242,14 +358,27 @@ namespace SGHA.Controllers
 
                 await connection.OpenAsync();
                 int result = await command.ExecuteNonQueryAsync();
+                if (result > 0)
+                {
+                    var updatedControl = await GetControlFromDb(houseId);
+                    if (updatedControl != null)
+                    {
+                        await NotifyClients(updatedControl); // ✨ إشعار SignalR هنا ✨
+                    }
 
-                return result > 0 ? Ok(new { IsAutomated = 1 }) : NotFound();
+                    return Ok(new { AutoStatus = 1 });
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Error: {ex.Message}");
             }
         }
+
         [HttpPatch("automated/off/{houseId}")]
         public async Task<IActionResult> PatchIsAutomatedOff(int houseId)
         {
@@ -270,15 +399,25 @@ namespace SGHA.Controllers
                 await connection.OpenAsync();
                 int result = await command.ExecuteNonQueryAsync();
 
-                return result > 0 ? Ok(new { IsAutomated = 0 }) : NotFound();
+                if (result > 0)
+                {
+                    var updatedControl = await GetControlFromDb(houseId);
+                    if (updatedControl != null)
+                    {
+                        await NotifyClients(updatedControl); // ✨ إشعار SignalR هنا ✨
+                    }
+
+                    return Ok(new { AutoStatus = 1 });
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Error: {ex.Message}");
             }
         }
-
-
-
     }
 }

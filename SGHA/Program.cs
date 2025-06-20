@@ -1,6 +1,8 @@
 
 //using Fleck;
 
+using SGHA.Hubs;
+
 namespace SGHA
 {
     public class Program
@@ -18,7 +20,12 @@ namespace SGHA
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddSignalR();
+
             var app = builder.Build();
+
+            app.MapHub<ControlStatusHub>("/controlStatusHub");
+
 
             // Update the CORS configuration to ensure proper handling of preflight requests and allow specific origins.  
             app.UseCors(policyBuilder =>
@@ -45,11 +52,5 @@ namespace SGHA
 
             app.Run();
         }
-
-        //private static websocketServer CreateWebSocketServer()
-        //{
-        //    return
-        //                new websocketServer();
-        //}
     }
 }

@@ -80,43 +80,7 @@ namespace SGHA.Controllers
 
             return result;
         }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetSensor(int id)
-        {
-            SensorDto sensor = null;
-
-            using (var conn = GetConnection())
-            {
-                await conn.OpenAsync();
-                var cmd = new SqlCommand("SELECT * FROM sys_sensor WHERE SensorID = @id", conn);
-                cmd.Parameters.AddWithValue("@id", id);
-
-                using (var reader = await cmd.ExecuteReaderAsync())
-                {
-                    if (await reader.ReadAsync())
-                    {
-                        sensor = new SensorDto
-                        {
-                            SensorID = reader.GetInt32(0),
-                            HouseID = reader.GetInt32(1),
-                            SensorType = reader.GetString(2),
-                            SensorName = reader.IsDBNull(3) ? null : reader.GetString(3),
-                            SensorLocation = reader.IsDBNull(4) ? null : reader.GetString(4),
-                            SensorValue = reader.IsDBNull(5) ? (double?)null : reader.GetDouble(5),
-                            Unit = reader.IsDBNull(6) ? null : reader.GetString(6),
-                            CreatedAt = reader.GetDateTime(7),
-                            UpdatedAt = reader.GetDateTime(8)
-                        };
-                    }
-                }
-            }
-
-            if (sensor == null) return NotFound();
-
-            return Ok(sensor);
-        }
-
+        //get all sensors in house by house id
         [HttpGet("house/{houseId}")]
 
         public async Task<IActionResult> GetSensorsByHouseId(int houseId)
@@ -219,6 +183,43 @@ namespace SGHA.Controllers
             }
         }
 
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetSensor(int id)
+        {
+            SensorDto sensor = null;
+
+            using (var conn = GetConnection())
+            {
+                await conn.OpenAsync();
+                var cmd = new SqlCommand("SELECT * FROM sys_sensor WHERE SensorID = @id", conn);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    if (await reader.ReadAsync())
+                    {
+                        sensor = new SensorDto
+                        {
+                            SensorID = reader.GetInt32(0),
+                            HouseID = reader.GetInt32(1),
+                            SensorType = reader.GetString(2),
+                            SensorName = reader.IsDBNull(3) ? null : reader.GetString(3),
+                            SensorLocation = reader.IsDBNull(4) ? null : reader.GetString(4),
+                            SensorValue = reader.IsDBNull(5) ? (double?)null : reader.GetDouble(5),
+                            Unit = reader.IsDBNull(6) ? null : reader.GetString(6),
+                            CreatedAt = reader.GetDateTime(7),
+                            UpdatedAt = reader.GetDateTime(8)
+                        };
+                    }
+                }
+            }
+
+            if (sensor == null) return NotFound();
+
+            return Ok(sensor);
+        }
+        
 
         [HttpPatch("{id}")]
         public async Task<IActionResult> UpdateSensor(int id, [FromBody] SensorDto sensorDto)

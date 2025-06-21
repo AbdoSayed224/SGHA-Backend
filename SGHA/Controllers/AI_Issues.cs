@@ -12,8 +12,9 @@ namespace SGHA.Controllers
     public class AI_IssuesController : ControllerBase
     {
         private readonly string _connectionString;
+
         private readonly IHubContext<ControlStatusHub> _hubContext;
-        private readonly IHubContext<ControlStatusHub> hubContext;
+
 
         public AI_IssuesController(IConfiguration configuration,IHubContext<ControlStatusHub>hubContext)
         {

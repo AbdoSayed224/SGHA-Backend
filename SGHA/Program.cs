@@ -22,9 +22,8 @@ namespace SGHA
             //added for SignalR
             builder.Services.AddSignalR();
 
-            var app = builder.Build();
 
-            app.MapHub<ControlStatusHub>("/controlStatusHub");
+            var app = builder.Build();
 
 
             // Update the CORS configuration to ensure proper handling of preflight requests and allow specific origins.  
@@ -49,6 +48,7 @@ namespace SGHA
 
             app.UseAuthorization();
 
+            app.MapHub<ControlStatusHub>("/controlStatusHub");
 
             app.MapControllers();
 

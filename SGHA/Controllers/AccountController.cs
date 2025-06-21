@@ -14,6 +14,7 @@ namespace SGHA.Controllers
         {
             _connectionString = configuration.GetConnectionString("Default");
         }
+
         // GET: api/Account/all
         [HttpGet("all")]
         public async Task<IActionResult> GetAllAccounts()

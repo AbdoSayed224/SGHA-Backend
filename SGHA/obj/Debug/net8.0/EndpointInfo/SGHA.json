@@ -1109,10 +1109,6 @@
       "AIIssueDto": {
         "type": "object",
         "properties": {
-          "issueID": {
-            "type": "integer",
-            "format": "int32"
-          },
           "isAnomaly": {
             "type": "boolean"
           },

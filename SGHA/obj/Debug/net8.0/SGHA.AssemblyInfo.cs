@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SGHA")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d53d6ae1f8e4b861ffdf88602b6c0e54d89a29f0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c617813d1feea935d77073f805cba1bc2a69c57a")]
 [assembly: System.Reflection.AssemblyProductAttribute("SGHA")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SGHA")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

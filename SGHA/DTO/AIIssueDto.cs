@@ -2,7 +2,7 @@
 {
     public class AIIssueDto
     {
-        public int IssueID { get; set; }
+
         public bool IsAnomaly { get; set; }         // true = problem detected, false = normal
         public string Action { get; set; }          // Action to solve the problem
         public string Parameter { get; set; }       // Sensor type

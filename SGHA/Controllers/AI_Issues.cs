@@ -91,7 +91,7 @@ namespace SGHA.Controllers
                     // إرسال إشعار SignalR بعد إضافة البيانات
                     await _hubContext.Clients.All.SendAsync("ReceiveNotification", new
                     {
-                        houseId = houseId,
+                        //houseId = houseId,
                         isAnomaly = dto.IsAnomaly,
                         action = dto.Action,
                         parameter = dto.Parameter,

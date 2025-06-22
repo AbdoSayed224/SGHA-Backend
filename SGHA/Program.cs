@@ -1,6 +1,7 @@
 
 //using Fleck;
 
+using Microsoft.AspNetCore.Http.Features;
 using SGHA.Hubs;
 
 namespace SGHA
@@ -14,11 +15,18 @@ namespace SGHA
            
           
             // Add services to the container.
-
             builder.Services.AddControllers();
+
+            builder.Services.Configure<FormOptions>(options =>
+            {
+                options.MultipartBodyLengthLimit = 104857600; // 100MB or any size
+            });
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
+            
             builder.Services.AddSwaggerGen();
+
             //added for SignalR
             builder.Services.AddSignalR();
 
@@ -41,8 +49,6 @@ namespace SGHA
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
-
 
             app.UseHttpsRedirection();
 

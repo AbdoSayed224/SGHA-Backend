@@ -154,6 +154,43 @@
   },
   {
     "ContainingType": "SGHA.Controllers.CameraController",
+    "Method": "GetMediaUrls",
+    "RelativePath": "api/Camera/{houseId}/media",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.CameraController",
+    "Method": "ShowMedia",
+    "RelativePath": "api/Camera/{houseId}/media/{type}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "type",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.CameraController",
     "Method": "UploadImage",
     "RelativePath": "api/Camera/{houseId}/upload",
     "HttpMethod": "POST",
@@ -164,36 +201,6 @@
         "Name": "houseId",
         "Type": "System.Int32",
         "IsRequired": true
-      },
-      {
-        "Name": "ContentType",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ContentDisposition",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Headers",
-        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
-        "IsRequired": false
-      },
-      {
-        "Name": "Length",
-        "Type": "System.Int64",
-        "IsRequired": false
-      },
-      {
-        "Name": "Name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "FileName",
-        "Type": "System.String",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -202,6 +209,22 @@
     "ContainingType": "SGHA.Controllers.CameraController",
     "Method": "GetImage",
     "RelativePath": "api/Camera/image/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.CameraController",
+    "Method": "GetVideo",
+    "RelativePath": "api/Camera/video/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

@@ -269,62 +269,6 @@
             }
           }
         ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "ContentType": {
-                    "type": "string"
-                  },
-                  "ContentDisposition": {
-                    "type": "string"
-                  },
-                  "Headers": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "Length": {
-                    "type": "integer",
-                    "format": "int64"
-                  },
-                  "Name": {
-                    "type": "string"
-                  },
-                  "FileName": {
-                    "type": "string"
-                  }
-                }
-              },
-              "encoding": {
-                "ContentType": {
-                  "style": "form"
-                },
-                "ContentDisposition": {
-                  "style": "form"
-                },
-                "Headers": {
-                  "style": "form"
-                },
-                "Length": {
-                  "style": "form"
-                },
-                "Name": {
-                  "style": "form"
-                },
-                "FileName": {
-                  "style": "form"
-                }
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "Success"
@@ -367,6 +311,83 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Camera/{houseId}/media/{type}": {
+      "get": {
+        "tags": [
+          "Camera"
+        ],
+        "parameters": [
+          {
+            "name": "houseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Camera/{houseId}/media": {
+      "get": {
+        "tags": [
+          "Camera"
+        ],
+        "parameters": [
+          {
+            "name": "houseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Camera/video/{id}": {
+      "get": {
+        "tags": [
+          "Camera"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success"

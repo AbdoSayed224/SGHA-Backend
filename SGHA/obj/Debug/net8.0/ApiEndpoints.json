@@ -117,6 +117,22 @@
   },
   {
     "ContainingType": "SGHA.Controllers.CameraController",
+    "Method": "GetLatestLiveStream",
+    "RelativePath": "api/Camera/{houseId}/livestream",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.CameraController",
     "Method": "AddLiveStream",
     "RelativePath": "api/Camera/{houseId}/livestream",
     "HttpMethod": "POST",
@@ -129,25 +145,19 @@
         "IsRequired": true
       },
       {
-        "Name": "dto",
-        "Type": "SGHA.DTO.LiveStreamDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SGHA.Controllers.CameraController",
-    "Method": "GetLiveStreams",
-    "RelativePath": "api/Camera/{houseId}/livestreams",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
+        "Name": "Stream",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
       {
-        "Name": "houseId",
-        "Type": "System.Int32",
-        "IsRequired": true
+        "Name": "CameraName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -163,27 +173,6 @@
       {
         "Name": "houseId",
         "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SGHA.Controllers.CameraController",
-    "Method": "ShowMedia",
-    "RelativePath": "api/Camera/{houseId}/media/{type}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "houseId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "type",
-        "Type": "System.String",
         "IsRequired": true
       }
     ],

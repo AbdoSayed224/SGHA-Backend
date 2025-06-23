@@ -10,6 +10,7 @@ D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\Azure.
 D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\BouncyCastle.Cryptography.dll
 D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\Dapper.dll
 D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\MailKit.dll
+D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNet.SignalR.Core.dll
 D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\Microsoft.Bcl.AsyncInterfaces.dll
 D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\Microsoft.Data.SqlClient.dll
 D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\Microsoft.EntityFrameworkCore.dll
@@ -37,9 +38,12 @@ D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\Micros
 D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
 D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\Microsoft.OpenApi.dll
+D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\Microsoft.Owin.dll
+D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\Microsoft.Owin.Security.dll
 D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\Microsoft.SqlServer.Server.dll
 D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\MimeKit.dll
 D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\Newtonsoft.Json.dll
+D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\Owin.dll
 D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

@@ -123,44 +123,37 @@ namespace SGHA.Controllers
             return Ok(mediaItems);
         }
 
-        [HttpGet("{houseId}/livestreams")]
-        public async Task<IActionResult> GetLiveStreams(int houseId)
+        [HttpGet("{houseId}/livestream")]
+        public async Task<IActionResult> GetLatestLiveStream(int houseId)
         {
             string query = @"
-        SELECT Id, StreamUrl, CameraName, Description, CreatedAt
+        SELECT TOP 1 ID, StreamUrl, CameraName, Description, CreatedAt
         FROM Sys_LiveStreams
         WHERE HouseID = @HouseID
         ORDER BY CreatedAt DESC";
 
-            var result = new List<object>();
+            using var connection = new SqlConnection(_connectionString);
+            using var command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@HouseID", houseId);
 
-            try
+            await connection.OpenAsync();
+            using var reader = await command.ExecuteReaderAsync();
+
+            if (!reader.HasRows)
+                return NotFound("No live stream found for this house.");
+
+            await reader.ReadAsync();
+
+            var result = new
             {
-                using var connection = new SqlConnection(_connectionString);
-                using var command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@HouseID", houseId);
+                id = reader["ID"],
+                streamUrl = reader["StreamUrl"],
+                cameraName = reader["CameraName"],
+                description = reader["Description"],
+                createdAt = Convert.ToDateTime(reader["CreatedAt"]).ToString("o")
+            };
 
-                await connection.OpenAsync();
-                using var reader = await command.ExecuteReaderAsync();
-
-                while (await reader.ReadAsync())
-                {
-                    result.Add(new
-                    {
-                        Id = reader.GetInt32(0),
-                        StreamUrl = reader["StreamUrl"].ToString(),
-                        CameraName = reader["CameraName"].ToString(),
-                        Description = reader["Description"].ToString(),
-                        CreatedAt = ((DateTime)reader["CreatedAt"]).ToString("o")
-                    });
-                }
-
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Error: {ex.Message}");
-            }
+            return Ok(result);
         }
 
         [HttpPost("{houseId}/upload")]
@@ -222,17 +215,34 @@ namespace SGHA.Controllers
         }
 
         [HttpPost("{houseId}/livestream")]
-        public async Task<IActionResult> AddLiveStream(int houseId, [FromBody] LiveStreamDto dto)
+        public async Task<IActionResult> AddLiveStream(int houseId, [FromForm] LiveStreamUploadDto dto)
         {
+            if (dto.Stream == null || dto.Stream.Length == 0)
+                return BadRequest("No stream file provided.");
+
+            var fileName = $"{Guid.NewGuid()}{Path.GetExtension(dto.Stream.FileName)}";
+            var savePath = Path.Combine("wwwroot", "uploads", "livestreams", fileName);
+            var directory = Path.GetDirectoryName(savePath);
+
+            if (!Directory.Exists(directory))
+                Directory.CreateDirectory(directory);
+
+            await using (var stream = new FileStream(savePath, FileMode.Create))
+            {
+                await dto.Stream.CopyToAsync(stream);
+            }
+
+            string relativePath = $"/uploads/livestreams/{fileName}";
+
             string query = @"
-                INSERT INTO Sys_LiveStreams (HouseID, StreamUrl, CameraName, Description, CreatedAt)
-                VALUES (@HouseID, @StreamUrl, @CameraName, @Description, @CreatedAt);
-                SELECT SCOPE_IDENTITY();";
+            INSERT INTO Sys_LiveStreams (HouseID, StreamUrl, CameraName, Description, CreatedAt)
+            VALUES (@HouseID, @StreamUrl, @CameraName, @Description, @CreatedAt);
+            SELECT SCOPE_IDENTITY();";
 
             using var connection = new SqlConnection(_connectionString);
             using var command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@HouseID", houseId);
-            command.Parameters.AddWithValue("@StreamUrl", dto.StreamUrl ?? (object)DBNull.Value);
+            command.Parameters.AddWithValue("@StreamUrl", relativePath);
             command.Parameters.AddWithValue("@CameraName", dto.CameraName ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@Description", dto.Description ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@CreatedAt", DateTime.UtcNow);
@@ -245,12 +255,20 @@ namespace SGHA.Controllers
                 type = "livestream",
                 houseId = houseId,
                 id = insertedId,
-                streamUrl = dto.StreamUrl,
+                streamUrl = relativePath,
                 cameraName = dto.CameraName,
                 createdAt = DateTime.UtcNow.ToString("o")
             });
 
-            return Ok(new { id = insertedId, message = "Livestream added successfully." });
+            return Ok(new { id = insertedId, message = "Livestream added and stored successfully." });
         }
+
+        public class LiveStreamUploadDto
+        {
+            public IFormFile Stream { get; set; }
+            public string CameraName { get; set; }
+            public string Description { get; set; }
+        }
+
     }
 }

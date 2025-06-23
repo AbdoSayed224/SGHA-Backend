@@ -202,3 +202,7 @@ D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\refint\SGHA.dll
 D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\SGHA.pdb
 D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\SGHA.genruntimeconfig.cache
 D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\ref\SGHA.dll
+D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.AspNet.SignalR.Core.dll
+D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Owin.dll
+D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Owin.Security.dll
+D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Owin.dll

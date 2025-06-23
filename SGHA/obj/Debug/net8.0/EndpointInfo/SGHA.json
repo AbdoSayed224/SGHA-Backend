@@ -230,115 +230,19 @@
         }
       }
     },
-    "/api/Camera/{houseId}/livestreams": {
+    "/api/Camera/video/{id}": {
       "get": {
         "tags": [
           "Camera"
         ],
         "parameters": [
           {
-            "name": "houseId",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/Camera/{houseId}/upload": {
-      "post": {
-        "tags": [
-          "Camera"
-        ],
-        "parameters": [
-          {
-            "name": "houseId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/Camera/{houseId}/livestream": {
-      "post": {
-        "tags": [
-          "Camera"
-        ],
-        "parameters": [
-          {
-            "name": "houseId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LiveStreamDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LiveStreamDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/LiveStreamDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/Camera/{houseId}/media/{type}": {
-      "get": {
-        "tags": [
-          "Camera"
-        ],
-        "parameters": [
-          {
-            "name": "houseId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "type",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -372,14 +276,90 @@
         }
       }
     },
-    "/api/Camera/video/{id}": {
+    "/api/Camera/{houseId}/livestream": {
       "get": {
         "tags": [
           "Camera"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "houseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Camera"
+        ],
+        "parameters": [
+          {
+            "name": "houseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Stream": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "CameraName": {
+                    "type": "string"
+                  },
+                  "Description": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "Stream": {
+                  "style": "form"
+                },
+                "CameraName": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Camera/{houseId}/upload": {
+      "post": {
+        "tags": [
+          "Camera"
+        ],
+        "parameters": [
+          {
+            "name": "houseId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1459,24 +1439,6 @@
           "updatedAt": {
             "type": "string",
             "format": "date-time"
-          }
-        },
-        "additionalProperties": false
-      },
-      "LiveStreamDto": {
-        "type": "object",
-        "properties": {
-          "streamUrl": {
-            "type": "string",
-            "nullable": true
-          },
-          "cameraName": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false

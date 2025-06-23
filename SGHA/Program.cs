@@ -1,8 +1,6 @@
-
-//using Fleck;
-
-using Microsoft.AspNetCore.Http.Features;
+﻿using Microsoft.AspNetCore.Http.Features;
 using SGHA.Hubs;
+using SGHA.WebSockets;
 
 namespace SGHA
 {
@@ -11,8 +9,6 @@ namespace SGHA
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
-           
           
             // Add services to the container.
             builder.Services.AddControllers();
@@ -30,9 +26,7 @@ namespace SGHA
             //added for SignalR
             builder.Services.AddSignalR();
 
-
             var app = builder.Build();
-
 
             // Update the CORS configuration to ensure proper handling of preflight requests and allow specific origins.  
             app.UseCors(policyBuilder =>

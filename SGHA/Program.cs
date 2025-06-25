@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http.Features;
 using SGHA.Hubs;
-using SGHA.WebSockets;
 
 namespace SGHA
 {
@@ -49,6 +48,7 @@ namespace SGHA
             app.UseAuthorization();
 
             app.MapHub<ControlStatusHub>("/controlStatusHub");
+            app.MapHub<AiHub>("/aiHub");
 
             app.MapControllers();
 

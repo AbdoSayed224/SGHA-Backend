@@ -80,9 +80,9 @@ namespace SGHA.Controllers
 
             return result;
         }
+
         //get all sensors in house by house id
         [HttpGet("house/{houseId}")]
-
         public async Task<IActionResult> GetSensorsByHouseId(int houseId)
         {
             var sensors = new List<SensorDto>();
@@ -118,7 +118,6 @@ namespace SGHA.Controllers
 
             return Ok(sensors);
         }
-
 
         [HttpGet("key-sensors/by-house-object/{houseId}")]
         public async Task<IActionResult> GetKeySensorsByHouseAsObject(int houseId)
@@ -183,7 +182,6 @@ namespace SGHA.Controllers
             }
         }
 
-
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSensor(int id)
         {
@@ -220,7 +218,6 @@ namespace SGHA.Controllers
             return Ok(sensor);
         }
         
-
         [HttpPatch("{id}")]
         public async Task<IActionResult> UpdateSensor(int id, [FromBody] SensorDto sensorDto)
         {
@@ -280,7 +277,7 @@ namespace SGHA.Controllers
                     var updatedReadings = await GetKeySensorReadingsByHouseId(1);
                     if (updatedReadings != null)
                     {
-                        await NotifyClients(updatedReadings); // ✨ إشعار SignalR هنا ✨
+                        await NotifyClients(updatedReadings);
                     }
 
                     return Ok(new { FanStatus = 1 });

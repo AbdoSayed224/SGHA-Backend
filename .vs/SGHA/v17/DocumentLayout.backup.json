@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "D:\\BUC\\Graduation Project\\SGHA-Backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|d:\\buc\\graduation project\\sgha-backend\\sgha\\websockets\\websockethandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|solutionrelative:sgha\\websockets\\websockethandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|d:\\buc\\graduation project\\sgha-backend\\sgha\\sgha.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|solutionrelative:sgha\\sgha.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|d:\\buc\\graduation project\\sgha-backend\\sgha\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|solutionrelative:sgha\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|d:\\buc\\graduation project\\sgha-backend\\sgha\\controllers\\cameracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|solutionrelative:sgha\\controllers\\cameracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|d:\\buc\\graduation project\\sgha-backend\\sgha\\controllers\\ai_issues.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|solutionrelative:sgha\\controllers\\ai_issues.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,27 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "WebSocketHandler.cs",
-              "DocumentMoniker": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\WebSockets\\WebSocketHandler.cs",
-              "RelativeDocumentMoniker": "SGHA\\WebSockets\\WebSocketHandler.cs",
-              "ToolTip": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\WebSockets\\WebSocketHandler.cs",
-              "RelativeToolTip": "SGHA\\WebSockets\\WebSocketHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Title": "CameraController.cs",
+              "DocumentMoniker": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Controllers\\CameraController.cs",
+              "RelativeDocumentMoniker": "SGHA\\Controllers\\CameraController.cs",
+              "ToolTip": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Controllers\\CameraController.cs",
+              "RelativeToolTip": "SGHA\\Controllers\\CameraController.cs",
+              "ViewState": "AgIAAL4AAAAAAAAAAADwv0kAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T12:38:26.141Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SGHA",
-              "DocumentMoniker": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\SGHA.csproj",
-              "RelativeDocumentMoniker": "SGHA\\SGHA.csproj",
-              "ToolTip": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\SGHA.csproj",
-              "RelativeToolTip": "SGHA\\SGHA.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-06-23T12:36:39.364Z",
+              "WhenOpened": "2025-06-24T10:49:00.315Z",
               "EditorCaption": ""
             },
             {
@@ -64,28 +43,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Program.cs",
-              "RelativeDocumentMoniker": "SGHA\\Program.cs",
-              "ToolTip": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Program.cs",
-              "RelativeToolTip": "SGHA\\Program.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBwAAAAPAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "AI_Issues.cs",
+              "DocumentMoniker": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Controllers\\AI_Issues.cs",
+              "RelativeDocumentMoniker": "SGHA\\Controllers\\AI_Issues.cs",
+              "ToolTip": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Controllers\\AI_Issues.cs",
+              "RelativeToolTip": "SGHA\\Controllers\\AI_Issues.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T12:32:53.55Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CameraController.cs",
-              "DocumentMoniker": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Controllers\\CameraController.cs",
-              "RelativeDocumentMoniker": "SGHA\\Controllers\\CameraController.cs",
-              "ToolTip": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Controllers\\CameraController.cs",
-              "RelativeToolTip": "SGHA\\Controllers\\CameraController.cs",
-              "ViewState": "AgIAAIsAAAAAAAAAAAAswJ0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T15:21:11.465Z",
+              "WhenOpened": "2025-06-23T14:51:48.21Z",
               "EditorCaption": ""
             }
           ]

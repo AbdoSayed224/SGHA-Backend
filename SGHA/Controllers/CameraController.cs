@@ -19,6 +19,11 @@ namespace SGHA.Controllers
             _hubContext = hubContext;
         }
 
+        private async Task NotifyClients(List<MediaItemDto> data)
+        {
+            await _hubContext.Clients.All.SendAsync("ReceiveImages", data);
+        }
+
         [HttpGet("image/{id}")]
         public async Task<IActionResult> GetImage(int id)
         {
@@ -69,13 +74,19 @@ namespace SGHA.Controllers
         [HttpGet("{houseId}/media")]
         public async Task<IActionResult> GetMediaUrls(int houseId)
         {
-            var mediaItems = new List<object>();
+            var mediaItems = await FetchMediaItems(houseId);
+            return Ok(mediaItems);
+        }
+
+        private async Task<List<MediaItemDto>> FetchMediaItems(int houseId)
+        {
+            var mediaItems = new List<MediaItemDto>();
 
             string mediaQuery = @"
-        SELECT Id, FileName, ContentType
-        FROM Sys_CameraImages
-        WHERE HouseID = @HouseID
-        ORDER BY UploadedAt DESC";
+            SELECT Id, FileName, ContentType
+            FROM Sys_CameraImages
+            WHERE HouseID = @HouseID
+            ORDER BY UploadedAt DESC";
 
             using var connection = new SqlConnection(_connectionString);
             await connection.OpenAsync();
@@ -109,18 +120,18 @@ namespace SGHA.Controllers
 
                 if (url != null)
                 {
-                    mediaItems.Add(new
+                    mediaItems.Add(new MediaItemDto
                     {
-                        id,
-                        fileName,
-                        type,
-                        contentType,
-                        url
+                        Id = id,
+                        FileName = fileName,
+                        Type = type,
+                        ContentType = contentType,
+                        Url = url
                     });
                 }
             }
 
-            return Ok(mediaItems);
+            return mediaItems;
         }
 
         [HttpGet("{houseId}/livestream")]
@@ -189,17 +200,11 @@ namespace SGHA.Controllers
                 await connection.OpenAsync();
                 var insertedId = Convert.ToInt32(await command.ExecuteScalarAsync());
 
-                // إرسال إشعار (ممكن تفعل الجزء ده لو عايز SignalR)
-                /*
-                await _hubContext.Clients.All.SendAsync("ReceiveNotification", new
+                var updatedMedia = await FetchMediaItems(houseId);
+                if(updatedMedia != null)
                 {
-                    type = "image",
-                    houseId = houseId,
-                    id = insertedId,
-                    fileName = formFile.FileName,
-                    uploadedAt = DateTime.UtcNow.ToString("o")
-                });
-                */
+                    NotifyClients(updatedMedia);
+                }
 
                 return Ok(new
                 {

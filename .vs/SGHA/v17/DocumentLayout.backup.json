@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\BUC\\Graduation Project\\SGHA-Backend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|d:\\buc\\graduation project\\sgha-backend\\sgha\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|solutionrelative:sgha\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|d:\\buc\\graduation project\\sgha-backend\\sgha\\controllers\\cameracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|solutionrelative:sgha\\controllers\\cameracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -18,21 +22,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CameraController.cs",
-              "DocumentMoniker": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Controllers\\CameraController.cs",
-              "RelativeDocumentMoniker": "SGHA\\Controllers\\CameraController.cs",
-              "ToolTip": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Controllers\\CameraController.cs",
-              "RelativeToolTip": "SGHA\\Controllers\\CameraController.cs",
-              "ViewState": "AgIAAL4AAAAAAAAAAADwv0kAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-24T10:49:00.315Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -43,7 +34,32 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Program.cs",
+              "RelativeDocumentMoniker": "SGHA\\Program.cs",
+              "ToolTip": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Program.cs",
+              "RelativeToolTip": "SGHA\\Program.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAQwDEAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T11:35:12.2Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "CameraController.cs",
+              "DocumentMoniker": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Controllers\\CameraController.cs",
+              "RelativeDocumentMoniker": "SGHA\\Controllers\\CameraController.cs",
+              "ToolTip": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Controllers\\CameraController.cs",
+              "RelativeToolTip": "SGHA\\Controllers\\CameraController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBcAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T10:49:00.315Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "AI_Issues.cs",
               "DocumentMoniker": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Controllers\\AI_Issues.cs",
               "RelativeDocumentMoniker": "SGHA\\Controllers\\AI_Issues.cs",
@@ -51,8 +67,7 @@
               "RelativeToolTip": "SGHA\\Controllers\\AI_Issues.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAAwBgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T14:51:48.21Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-23T14:51:48.21Z"
             }
           ]
         }

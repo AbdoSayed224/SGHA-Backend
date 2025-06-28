@@ -102,13 +102,13 @@
   {
     "ContainingType": "SGHA.Controllers.AuthController",
     "Method": "ResetPassword",
-    "RelativePath": "api/Auth/reset-password",
+    "RelativePath": "api/Auth/resetPassword",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
+        "Name": "resetPasswordRequest",
         "Type": "SGHA.DTO.ResetPasswordDto",
         "IsRequired": true
       }
@@ -116,10 +116,26 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SGHA.Controllers.AuthController",
+    "Method": "SendEmail",
+    "RelativePath": "api/Auth/sendEmail",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "emailRequest",
+        "Type": "SGHA.DTO.EmailRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SGHA.Controllers.CameraController",
-    "Method": "GetLatestLiveStream",
-    "RelativePath": "api/Camera/{houseId}/livestream",
-    "HttpMethod": "GET",
+    "Method": "DeleteAllImages",
+    "RelativePath": "api/Camera/{houseId}/all-images",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -130,6 +146,32 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.CameraController",
+    "Method": "GetLatestImageMetadata",
+    "RelativePath": "api/Camera/{houseId}/image/latest",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SGHA.DTO.LatestImageDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "SGHA.Controllers.CameraController",
@@ -199,6 +241,22 @@
     "Method": "GetImage",
     "RelativePath": "api/Camera/image/{id}",
     "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.CameraController",
+    "Method": "DeleteImage",
+    "RelativePath": "api/Camera/one-image/{id}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [

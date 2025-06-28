@@ -11,6 +11,7 @@ E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\Azure.Identity.dll
 E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\BouncyCastle.Cryptography.dll
 E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\Dapper.dll
 E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\MailKit.dll
+E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.AspNet.SignalR.Core.dll
 E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Data.SqlClient.dll
 E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.EntityFrameworkCore.dll
@@ -38,9 +39,13 @@ E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.IdentityModel.Pro
 E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.IdentityModel.Tokens.dll
 E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.OpenApi.dll
+E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Owin.dll
+E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Owin.Security.dll
 E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.SqlServer.Server.dll
 E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\MimeKit.dll
+E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\NETCore.MailKit.dll
 E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\Newtonsoft.Json.dll
+E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\Owin.dll
 E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 E:\SGHA-backend\SGHA-Backend\SGHA\bin\Release\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -100,109 +105,3 @@ E:\SGHA-backend\SGHA-Backend\SGHA\obj\Release\net8.0\refint\SGHA.dll
 E:\SGHA-backend\SGHA-Backend\SGHA\obj\Release\net8.0\SGHA.pdb
 E:\SGHA-backend\SGHA-Backend\SGHA\obj\Release\net8.0\SGHA.genruntimeconfig.cache
 E:\SGHA-backend\SGHA-Backend\SGHA\obj\Release\net8.0\ref\SGHA.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\appsettings.Development.json
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\appsettings.json
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\SGHA.staticwebassets.endpoints.json
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\SGHA.exe
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\SGHA.deps.json
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\SGHA.runtimeconfig.json
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\SGHA.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\SGHA.pdb
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Azure.Core.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Azure.Identity.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\BouncyCastle.Cryptography.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Dapper.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\MailKit.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Data.SqlClient.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.EntityFrameworkCore.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Extensions.Caching.Memory.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Extensions.DependencyInjection.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Extensions.Logging.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Extensions.ObjectPool.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Extensions.Options.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Extensions.Primitives.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Identity.Client.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.IdentityModel.Abstractions.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.IdentityModel.Logging.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.IdentityModel.Protocols.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.IdentityModel.Tokens.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.OpenApi.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.SqlServer.Server.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\MimeKit.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Newtonsoft.Json.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Swashbuckle.AspNetCore.Swagger.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\System.ClientModel.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\System.Configuration.ConfigurationManager.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\System.Diagnostics.DiagnosticSource.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\System.Formats.Asn1.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\System.IdentityModel.Tokens.Jwt.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\System.IO.Pipelines.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\System.Memory.Data.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\System.Runtime.Caching.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\System.Security.Cryptography.Pkcs.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\System.Security.Cryptography.ProtectedData.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\System.Text.Encodings.Web.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\System.Text.Json.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\de\Microsoft.Data.SqlClient.resources.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\es\Microsoft.Data.SqlClient.resources.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\fr\Microsoft.Data.SqlClient.resources.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\it\Microsoft.Data.SqlClient.resources.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\ja\Microsoft.Data.SqlClient.resources.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\ko\Microsoft.Data.SqlClient.resources.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\ru\Microsoft.Data.SqlClient.resources.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\SGHA.csproj.AssemblyReference.cache
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\rpswa.dswa.cache.json
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\SGHA.GeneratedMSBuildEditorConfig.editorconfig
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\SGHA.AssemblyInfoInputs.cache
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\SGHA.AssemblyInfo.cs
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\SGHA.csproj.CoreCompileInputs.cache
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\SGHA.MvcApplicationPartsAssemblyInfo.cs
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\SGHA.MvcApplicationPartsAssemblyInfo.cache
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\SGHA.sourcelink.json
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\rjimswa.dswa.cache.json
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\rjsmrazor.dswa.cache.json
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\rjsmcshtml.dswa.cache.json
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\scopedcss\bundle\SGHA.styles.css
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\staticwebassets.build.json
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\staticwebassets.build.json.cache
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\staticwebassets.development.json
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\staticwebassets.build.endpoints.json
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\staticwebassets.upToDateCheck.txt
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\SGHA.csproj.Up2Date
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\SGHA.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\refint\SGHA.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\SGHA.pdb
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\SGHA.genruntimeconfig.cache
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\obj\Release\net8.0\ref\SGHA.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.AspNet.SignalR.Core.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Owin.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Microsoft.Owin.Security.dll
-D:\BUC\Graduation Project\SGHA-Backend\SGHA\bin\Release\net8.0\Owin.dll

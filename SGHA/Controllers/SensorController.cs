@@ -33,12 +33,14 @@ namespace SGHA.Controllers
             double? temperature = null;
             double? humidity = null;
             double? moisture = null;
+            double? light = null;
+            double? airquality = null;
 
             string query = @"
                 SELECT SensorType, SensorValue
                 FROM Sys_Sensor
                 WHERE HouseID = @HouseID
-                  AND SensorType IN ('Temperature', 'Humidity', 'Soil Moisture')";
+                  AND SensorType IN ('Temperature', 'Humidity', 'Soil Moisture', 'Light'.'AirQuality')";
 
             using (var connection = GetConnection())
             using (var command = new SqlCommand(query, connection))
@@ -65,6 +67,12 @@ namespace SGHA.Controllers
                             case "soil moisture":
                                 moisture = value;
                                 break;
+                            case "Light":
+                                light = value;
+                                break;
+                            case "AirQuality":
+                                airquality = value;
+                                break;
                         }
 
                     }
@@ -75,7 +83,9 @@ namespace SGHA.Controllers
             {
                 Temperature = temperature,
                 Humidity = humidity,
-                Moisture = moisture
+                Moisture = moisture,
+                Light = light,
+                AirQuality = airquality
             };
 
             return result;
@@ -125,12 +135,14 @@ namespace SGHA.Controllers
             double? temperature = null;
             double? humidity = null;
             double? moisture = null;
+            double? light = null;
+            double? airquality = null;
 
             string query = @"
         SELECT SensorType, SensorValue
         FROM Sys_Sensor
         WHERE HouseID = @HouseID
-          AND SensorType IN ('Temperature', 'Humidity', 'Soil Moisture')";
+          AND SensorType IN ('Temperature', 'Humidity', 'Soil Moisture', 'Light','AirQuality')";
 
             try
             {
@@ -158,6 +170,12 @@ namespace SGHA.Controllers
                                 case "Soil Moisture":
                                     moisture = value;
                                     break;
+                                case "Light":
+                                    light = value;
+                                    break;
+                                case "AirQuality":
+                                    airquality = value;
+                                    break;
                             }
                         }
                     }
@@ -167,7 +185,9 @@ namespace SGHA.Controllers
                 {
                     Temperature = temperature,
                     Humidity = humidity,
-                    Moisture = moisture
+                    Moisture = moisture,
+                    Light = light,
+                    AirQuality = airquality
                 };
 
                 return Ok(result);
@@ -298,7 +318,7 @@ namespace SGHA.Controllers
                     "VALUES (@HouseID, @SensorType, @SensorName, @SensorLocation, @SensorValue, @Unit, @CreatedAt, @UpdatedAt); " +
                     "SELECT SCOPE_IDENTITY();", conn);
 
-                cmd.Parameters.AddWithValue("@HouseID", sensorDto.HouseID);
+                //cmd.Parameters.AddWithValue("@HouseID", sensorDto.HouseID);
                 cmd.Parameters.AddWithValue("@SensorType", sensorDto.SensorType);
                 cmd.Parameters.AddWithValue("@SensorName", (object?)sensorDto.SensorName ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@SensorLocation", (object?)sensorDto.SensorLocation ?? DBNull.Value);

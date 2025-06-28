@@ -145,6 +145,37 @@
         }
       }
     },
+    "/api/Auth/sendEmail": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Auth/login": {
       "post": {
         "tags": [
@@ -176,7 +207,7 @@
         }
       }
     },
-    "/api/Auth/reset-password": {
+    "/api/Auth/resetPassword": {
       "post": {
         "tags": [
           "Auth"
@@ -276,8 +307,48 @@
         }
       }
     },
-    "/api/Camera/{houseId}/livestream": {
+    "/api/Camera/{houseId}/image/latest": {
       "get": {
+        "tags": [
+          "Camera"
+        ],
+        "parameters": [
+          {
+            "name": "houseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LatestImageDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LatestImageDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LatestImageDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Camera/{houseId}/upload": {
+      "post": {
         "tags": [
           "Camera"
         ],
@@ -297,7 +368,9 @@
             "description": "Success"
           }
         }
-      },
+      }
+    },
+    "/api/Camera/{houseId}/livestream": {
       "post": {
         "tags": [
           "Camera"
@@ -352,8 +425,31 @@
         }
       }
     },
-    "/api/Camera/{houseId}/upload": {
-      "post": {
+    "/api/Camera/one-image/{id}": {
+      "delete": {
+        "tags": [
+          "Camera"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Camera/{houseId}/all-images": {
+      "delete": {
         "tags": [
           "Camera"
         ],
@@ -1294,7 +1390,8 @@
           },
           "value": {
             "type": "number",
-            "format": "float"
+            "format": "float",
+            "nullable": true
           },
           "message": {
             "type": "string",
@@ -1401,6 +1498,24 @@
         },
         "additionalProperties": false
       },
+      "EmailRequestDto": {
+        "type": "object",
+        "properties": {
+          "to": {
+            "type": "string",
+            "nullable": true
+          },
+          "subject": {
+            "type": "string",
+            "nullable": true
+          },
+          "body": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "HouseDto": {
         "type": "object",
         "properties": {
@@ -1439,6 +1554,32 @@
           "updatedAt": {
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LatestImageDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fileName": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentType": {
+            "type": "string",
+            "nullable": true
+          },
+          "uploadedAt": {
+            "type": "string",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

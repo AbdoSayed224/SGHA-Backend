@@ -24,7 +24,7 @@ namespace SGHA.Controllers
 
             // SQL query to get all users along with account email, role name, and house name
             string query = @"
-        SELECT u.UserID, u.UserName, u.PhoneNumber, a.EmailAddress AS AccountEmail, r.RoleName, 
+        SELECT u.UserID, u.UserName, u.PhoneNumber, a.EmailAddress AS AccountEmail, r.RoleName,
                u.CreatedAt, u.UpdatedAt, u.IsActive, h.HouseName
         FROM Sys_User u
         LEFT JOIN Sys_Account a ON u.AccountID = a.AccountID

@@ -88,6 +88,7 @@ namespace SGHA.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
         // Delete Sys_Account
         [HttpDelete("delete-account/{accountId}")]
         public async Task<IActionResult> DeleteAccount(int accountId)

@@ -1,18 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\BUC\\Graduation Project\\SGHA-Backend\\",
+  "WorkspaceRootPath": "E:\\SGHA-backend\\SGHA-Backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|d:\\buc\\graduation project\\sgha-backend\\sgha\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|solutionrelative:sgha\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|e:\\sgha-backend\\sgha-backend\\sgha\\controllers\\sensorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|solutionrelative:sgha\\controllers\\sensorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|d:\\buc\\graduation project\\sgha-backend\\sgha\\controllers\\cameracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|solutionrelative:sgha\\controllers\\cameracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|e:\\sgha-backend\\sgha-backend\\sgha\\dto\\keysensorreadingsdto.cs||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|solutionrelative:sgha\\dto\\keysensorreadingsdto.cs||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|d:\\buc\\graduation project\\sgha-backend\\sgha\\controllers\\ai_issues.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|solutionrelative:sgha\\controllers\\ai_issues.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|e:\\sgha-backend\\sgha-backend\\sgha\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|solutionrelative:sgha\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|e:\\sgha-backend\\sgha-backend\\sgha\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8912F38D-6F8D-4403-B351-80CB3A57AE9E}|SGHA\\SGHA.csproj|solutionrelative:sgha\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,40 +38,53 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Program.cs",
-              "RelativeDocumentMoniker": "SGHA\\Program.cs",
-              "ToolTip": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Program.cs",
-              "RelativeToolTip": "SGHA\\Program.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAQwDEAAAA7AAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "KeySensorReadingsDto.cs",
+              "DocumentMoniker": "E:\\SGHA-backend\\SGHA-Backend\\SGHA\\DTO\\KeySensorReadingsDto.cs",
+              "RelativeDocumentMoniker": "SGHA\\DTO\\KeySensorReadingsDto.cs",
+              "ToolTip": "E:\\SGHA-backend\\SGHA-Backend\\SGHA\\DTO\\KeySensorReadingsDto.cs",
+              "RelativeToolTip": "SGHA\\DTO\\KeySensorReadingsDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-24T11:35:12.2Z",
+              "WhenOpened": "2025-06-27T22:38:50.439Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CameraController.cs",
-              "DocumentMoniker": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Controllers\\CameraController.cs",
-              "RelativeDocumentMoniker": "SGHA\\Controllers\\CameraController.cs",
-              "ToolTip": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Controllers\\CameraController.cs",
-              "RelativeToolTip": "SGHA\\Controllers\\CameraController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBcAAABCAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "SensorController.cs",
+              "DocumentMoniker": "E:\\SGHA-backend\\SGHA-Backend\\SGHA\\Controllers\\SensorController.cs",
+              "RelativeDocumentMoniker": "SGHA\\Controllers\\SensorController.cs",
+              "ToolTip": "E:\\SGHA-backend\\SGHA-Backend\\SGHA\\Controllers\\SensorController.cs",
+              "RelativeToolTip": "SGHA\\Controllers\\SensorController.cs",
+              "ViewState": "AgIAACoBAAAAAAAAAAAcwEABAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-24T10:49:00.315Z"
+              "WhenOpened": "2025-06-27T22:34:52.187Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "E:\\SGHA-backend\\SGHA-Backend\\SGHA\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "SGHA\\Controllers\\AuthController.cs",
+              "ToolTip": "E:\\SGHA-backend\\SGHA-Backend\\SGHA\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "SGHA\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAC4AAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-27T22:28:53.403Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "AI_Issues.cs",
-              "DocumentMoniker": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Controllers\\AI_Issues.cs",
-              "RelativeDocumentMoniker": "SGHA\\Controllers\\AI_Issues.cs",
-              "ToolTip": "D:\\BUC\\Graduation Project\\SGHA-Backend\\SGHA\\Controllers\\AI_Issues.cs",
-              "RelativeToolTip": "SGHA\\Controllers\\AI_Issues.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBgAAAAAAAAAAAAAAA==",
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "E:\\SGHA-backend\\SGHA-Backend\\SGHA\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "SGHA\\Controllers\\AccountController.cs",
+              "ToolTip": "E:\\SGHA-backend\\SGHA-Backend\\SGHA\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "SGHA\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T14:51:48.21Z"
+              "WhenOpened": "2025-06-27T22:28:45.803Z"
             }
           ]
         }

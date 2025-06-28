@@ -23,6 +23,10 @@ namespace SGHA.Controllers
         {
             await _hubContext.Clients.All.SendAsync("ReceiveImages", data);
         }
+        private async Task NotifyClientslatest(LatestImageDto data)
+        {
+            await _hubContext.Clients.All.SendAsync("ReceiveImageslatest", data);
+        }
 
         [HttpGet("image/{id}")]
         public async Task<IActionResult> GetImage(int id)
@@ -47,6 +51,7 @@ namespace SGHA.Controllers
             return NotFound("Image not found.");
         }
 
+        #region get video
         [HttpGet("video/{id}")]
         public async Task<IActionResult> GetVideo(int id)
         {
@@ -70,6 +75,7 @@ namespace SGHA.Controllers
 
             return NotFound("Video not found.");
         }
+        #endregion
 
         [HttpGet("{houseId}/media")]
         public async Task<IActionResult> GetMediaUrls(int houseId)
@@ -134,14 +140,14 @@ namespace SGHA.Controllers
             return mediaItems;
         }
 
-        [HttpGet("{houseId}/livestream")]
-        public async Task<IActionResult> GetLatestLiveStream(int houseId)
+        [HttpGet("{houseId}/image/latest")]
+        public async Task<LatestImageDto> GetLatestImageMetadata(int houseId)
         {
             string query = @"
-        SELECT TOP 1 ID, StreamUrl, CameraName, Description, CreatedAt
-        FROM Sys_LiveStreams
-        WHERE HouseID = @HouseID
-        ORDER BY CreatedAt DESC";
+    SELECT TOP 1 Id, FileName, ContentType, UploadedAt
+    FROM Sys_CameraImages
+    WHERE HouseID = @HouseID
+    ORDER BY UploadedAt DESC";
 
             using var connection = new SqlConnection(_connectionString);
             using var command = new SqlCommand(query, connection);
@@ -151,22 +157,57 @@ namespace SGHA.Controllers
             using var reader = await command.ExecuteReaderAsync();
 
             if (!reader.HasRows)
-                return NotFound("No live stream found for this house.");
-
+                  return null; // No images found
             await reader.ReadAsync();
 
-            var result = new
+            var dto = new LatestImageDto
             {
-                id = reader["ID"],
-                streamUrl = reader["StreamUrl"],
-                cameraName = reader["CameraName"],
-                description = reader["Description"],
-                createdAt = Convert.ToDateTime(reader["CreatedAt"]).ToString("o")
+                Id = reader.GetInt32(0),
+                FileName = reader.GetString(1),
+                ContentType = reader.GetString(2),
+                UploadedAt = reader.GetDateTime(3).ToString("o"),
+                Url = Url.Action("GetImage", "Camera", new { id = reader.GetInt32(0) }, Request.Scheme)
             };
 
-            return Ok(result);
+            return dto;
         }
 
+        #region get livstream
+
+        //[HttpGet("{houseId}/livestream")]
+        //public async Task<IActionResult> GetLatestLiveStream(int houseId)
+        //{
+        //    string query = @"
+        //SELECT TOP 1 ID, StreamUrl, CameraName, Description, CreatedAt
+        //FROM Sys_LiveStreams
+        //WHERE HouseID = @HouseID
+        //ORDER BY CreatedAt DESC";
+
+        //    using var connection = new SqlConnection(_connectionString);
+        //    using var command = new SqlCommand(query, connection);
+        //    command.Parameters.AddWithValue("@HouseID", houseId);
+
+        //    await connection.OpenAsync();
+        //    using var reader = await command.ExecuteReaderAsync();
+
+        //    if (!reader.HasRows)
+        //        return NotFound("No live stream found for this house.");
+
+        //    await reader.ReadAsync();
+
+        //    var result = new
+        //    {
+        //        id = reader["ID"],
+        //        streamUrl = reader["StreamUrl"],
+        //        cameraName = reader["CameraName"],
+        //        description = reader["Description"],
+        //        createdAt = Convert.ToDateTime(reader["CreatedAt"]).ToString("o")
+        //    };
+
+        //    return Ok(result);
+        //}
+
+        #endregion
         [HttpPost("{houseId}/upload")]
         public async Task<IActionResult> UploadImage(int houseId)
         {
@@ -201,8 +242,14 @@ namespace SGHA.Controllers
                 var insertedId = Convert.ToInt32(await command.ExecuteScalarAsync());
 
                 var updatedMedia = await FetchMediaItems(houseId);
-                if(updatedMedia != null)
+                var currentImage = await GetLatestImageMetadata(houseId);
+                if (currentImage != null)
                 {
+                    NotifyClientslatest(currentImage);
+                }
+                if (updatedMedia != null)
+                {
+
                     NotifyClients(updatedMedia);
                 }
 
@@ -273,6 +320,42 @@ namespace SGHA.Controllers
             public IFormFile Stream { get; set; }
             public string CameraName { get; set; }
             public string Description { get; set; }
+        }
+
+        [HttpDelete("one-image/{id}")]
+        public async Task<IActionResult> DeleteImage(int id)
+        {
+            string query = "DELETE FROM Sys_CameraImages WHERE Id = @Id";
+
+            using var connection = new SqlConnection(_connectionString);
+            using var command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@Id", id);
+
+            await connection.OpenAsync();
+            int affected = await command.ExecuteNonQueryAsync();
+
+            if (affected == 0)
+                return NotFound("Image not found.");
+
+            return Ok(new { message = $"Image {id} deleted successfully." });
+        }
+
+        [HttpDelete("{houseId}/all-images")]
+        public async Task<IActionResult> DeleteAllImages(int houseId)
+        {
+            string query = "DELETE FROM Sys_CameraImages WHERE HouseID = @HouseID";
+
+            using var connection = new SqlConnection(_connectionString);
+            using var command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@HouseID", houseId);
+
+            await connection.OpenAsync();
+            int affected = await command.ExecuteNonQueryAsync();
+
+            return Ok(new
+            {
+                message = $"{affected} image(s) deleted for house {houseId}."
+            });
         }
 
     }

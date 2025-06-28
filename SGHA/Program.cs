@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http.Features;
 using SGHA.Hubs;
+using SGHA.Interfaces;
+using SGHA.Services;
 
 namespace SGHA
 {
@@ -8,20 +10,21 @@ namespace SGHA
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-          
+
             // Add services to the container.
             builder.Services.AddControllers();
+            builder.Services.AddScoped<IEmailService, EmailService>();
 
-            builder.Services.Configure<FormOptions>(options =>
-            {
-                options.MultipartBodyLengthLimit = 104857600; // 100MB or any size
-            });
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             
             builder.Services.AddSwaggerGen();
-
+            builder.Services.Configure<FormOptions>(options =>
+            {
+                options.MultipartBodyLengthLimit = 104857600; // 100MB or any size
+            });
+          
             //added for SignalR
             builder.Services.AddSignalR();
 

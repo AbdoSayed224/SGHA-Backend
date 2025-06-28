@@ -196,7 +196,7 @@ namespace SGHA.Controllers
                         Humidity = humidity,
                         Moisture = moisture,
                         Light = light,
-                        AirQuality = airquality
+                        AirQuality = airquality,
                     };
 
                     return Ok(result);
@@ -327,7 +327,7 @@ namespace SGHA.Controllers
                     "VALUES (@HouseID, @SensorType, @SensorName, @SensorLocation, @SensorValue, @Unit, @CreatedAt, @UpdatedAt); " +
                     "SELECT SCOPE_IDENTITY();", conn);
 
-                //cmd.Parameters.AddWithValue("@HouseID", sensorDto.HouseID);
+                cmd.Parameters.AddWithValue("@HouseID", sensorDto.HouseID);
                 cmd.Parameters.AddWithValue("@SensorType", sensorDto.SensorType);
                 cmd.Parameters.AddWithValue("@SensorName", (object?)sensorDto.SensorName ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@SensorLocation", (object?)sensorDto.SensorLocation ?? DBNull.Value);

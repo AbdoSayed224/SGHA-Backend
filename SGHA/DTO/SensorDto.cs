@@ -2,7 +2,7 @@
 {
     public class SensorDto
     {
-        public int SensorID { get; set; }
+        public int? SensorID { get; set; }
         public int HouseID { get; set; }
         public string SensorType { get; set; }
         public string SensorName { get; set; }

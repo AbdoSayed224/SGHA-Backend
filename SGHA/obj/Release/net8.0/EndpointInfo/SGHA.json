@@ -145,7 +145,53 @@
         }
       }
     },
-    "/{houseId}": {
+    "/api/AIImage/image-file/{fileId}": {
+      "get": {
+        "tags": [
+          "AIImage"
+        ],
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/AIImage/by-house/{houseId}": {
+      "get": {
+        "tags": [
+          "AIImage"
+        ],
+        "parameters": [
+          {
+            "name": "houseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/AIImage/{houseId}": {
       "post": {
         "tags": [
           "AIImage"
@@ -180,6 +226,29 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/AIImage/by-id/{aiImageId}": {
+      "get": {
+        "tags": [
+          "AIImage"
+        ],
+        "parameters": [
+          {
+            "name": "aiImageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success"
@@ -1412,57 +1481,7 @@
   },
   "components": {
     "schemas": {
-      "AIImageUploadDto": {
-        "type": "object",
-        "properties": {
-          "results": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AIResultDto"
-            },
-            "nullable": true
-          },
-          "images": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "AIIssueDto": {
-        "type": "object",
-        "properties": {
-          "isAnomaly": {
-            "type": "boolean"
-          },
-          "action": {
-            "type": "string",
-            "nullable": true
-          },
-          "parameter": {
-            "type": "string",
-            "nullable": true
-          },
-          "range": {
-            "type": "string",
-            "nullable": true
-          },
-          "value": {
-            "type": "number",
-            "format": "float",
-            "nullable": true
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "AIResultDto": {
+      "AIImageResultDto": {
         "type": "object",
         "properties": {
           "model": {
@@ -1486,6 +1505,57 @@
             "nullable": true
           },
           "actionNeeded": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AIImageUploadDto": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AIImageResultDto"
+            },
+            "nullable": true
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AIIssueDto": {
+        "type": "object",
+        "properties": {
+          "isAnomaly": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "action": {
+            "type": "string",
+            "nullable": true
+          },
+          "parameter": {
+            "type": "string",
+            "nullable": true
+          },
+          "range": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "message": {
             "type": "string",
             "nullable": true
           }
@@ -1735,11 +1805,13 @@
           },
           "createdAt": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
           },
           "updatedAt": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
           }
         },
         "additionalProperties": false

@@ -1,26 +1,5 @@
 [
   {
-    "ContainingType": "SGHA.Controllers.AIImageController",
-    "Method": "ReceiveAIResult",
-    "RelativePath": "{houseId}",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "houseId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "dto",
-        "Type": "SGHA.DTO.AIImageUploadDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "SGHA.Controllers.AccountController",
     "Method": "GetAllAccounts",
     "RelativePath": "api/Account/all",
@@ -99,6 +78,75 @@
       {
         "Name": "dto",
         "Type": "SGHA.DTO.AIIssueDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.AIImageController",
+    "Method": "ReceiveAIResult",
+    "RelativePath": "api/AIImage/{houseId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "SGHA.Controllers.AIImageController\u002BAIImageUploadDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.AIImageController",
+    "Method": "GetAllAIImagesByHouse",
+    "RelativePath": "api/AIImage/by-house/{houseId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.AIImageController",
+    "Method": "GetAIImageById",
+    "RelativePath": "api/AIImage/by-id/{aiImageId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "aiImageId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SGHA.Controllers.AIImageController",
+    "Method": "GetImageFile",
+    "RelativePath": "api/AIImage/image-file/{fileId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fileId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

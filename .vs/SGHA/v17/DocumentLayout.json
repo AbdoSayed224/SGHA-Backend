@@ -82,8 +82,7 @@
               "RelativeToolTip": "SGHA\\Controllers\\ControlOption.cs",
               "ViewState": "AgIAAIQAAAAAAAAAAAAowBgAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T19:12:02.731Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-29T19:12:02.731Z"
             },
             {
               "$type": "Document",
@@ -131,8 +130,7 @@
               "RelativeToolTip": "SGHA\\Controllers\\AIImageController.cs",
               "ViewState": "AgIAAPYAAAAAAAAAAAAkwAwBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T21:34:42.087Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T21:34:42.087Z"
             },
             {
               "$type": "Document",
@@ -144,8 +142,7 @@
               "RelativeToolTip": "SGHA\\Controllers\\CameraController.cs",
               "ViewState": "AgIAAIAAAAAAAAAAAAAswIwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T21:25:15.757Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T21:25:15.757Z"
             },
             {
               "$type": "Document",
@@ -157,8 +154,7 @@
               "RelativeToolTip": "SGHA\\DTO\\SensorDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T17:31:20.083Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T17:31:20.083Z"
             },
             {
               "$type": "Document",
@@ -206,8 +202,7 @@
               "RelativeToolTip": "SGHA\\Controllers\\SensorController.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAwBkAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T22:34:52.187Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T22:34:52.187Z"
             },
             {
               "$type": "Document",
@@ -219,8 +214,7 @@
               "RelativeToolTip": "SGHA\\Controllers\\AuthController.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAAAC4AAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T22:28:53.403Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T22:28:53.403Z"
             },
             {
               "$type": "Document",
@@ -232,8 +226,7 @@
               "RelativeToolTip": "SGHA\\Controllers\\AccountController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T22:28:45.803Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T22:28:45.803Z"
             }
           ]
         }

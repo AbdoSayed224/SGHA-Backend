@@ -82,7 +82,8 @@
               "RelativeToolTip": "SGHA\\Controllers\\ControlOption.cs",
               "ViewState": "AgIAAIQAAAAAAAAAAAAowBgAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T19:12:02.731Z"
+              "WhenOpened": "2025-06-29T19:12:02.731Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -143,7 +144,8 @@
               "RelativeToolTip": "SGHA\\Controllers\\CameraController.cs",
               "ViewState": "AgIAAIAAAAAAAAAAAAAswIwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T21:25:15.757Z"
+              "WhenOpened": "2025-06-28T21:25:15.757Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -155,7 +157,8 @@
               "RelativeToolTip": "SGHA\\DTO\\SensorDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T17:31:20.083Z"
+              "WhenOpened": "2025-06-28T17:31:20.083Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -203,7 +206,8 @@
               "RelativeToolTip": "SGHA\\Controllers\\SensorController.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAwBkAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T22:34:52.187Z"
+              "WhenOpened": "2025-06-27T22:34:52.187Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -215,7 +219,8 @@
               "RelativeToolTip": "SGHA\\Controllers\\AuthController.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAAAC4AAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T22:28:53.403Z"
+              "WhenOpened": "2025-06-27T22:28:53.403Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -227,7 +232,8 @@
               "RelativeToolTip": "SGHA\\Controllers\\AccountController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T22:28:45.803Z"
+              "WhenOpened": "2025-06-27T22:28:45.803Z",
+              "EditorCaption": ""
             }
           ]
         }
